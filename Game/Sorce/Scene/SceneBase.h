@@ -21,7 +21,7 @@ public:
     virtual SceneBase* Update(float _deltaTime) = 0;
 
     /// <summary>
-    /// シーンの描画
+    /// シーンの描画処理
     /// </summary>
     virtual void Draw() = 0;
 
