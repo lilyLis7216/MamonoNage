@@ -7,7 +7,6 @@ enum class ObjTag : unsigned char
     Bullet,
     BulletDummy,
     Enemy,
-    Map
 };
 
 //------------------------------------------------------------------------------------
@@ -19,5 +18,4 @@ constexpr static ObjTag ObjTagAll[] =
     ObjTag::Bullet,
     ObjTag::BulletDummy,
     ObjTag::Enemy,
-    ObjTag::Map,
 };

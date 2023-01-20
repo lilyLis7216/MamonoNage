@@ -1,5 +1,12 @@
 #pragma once
 
+const int ScreenBeside = 1920;
+const int ScreenVertical = 1080;
+const int ColorDepth = 16;
+
+/// <summary>
+/// シーンベースクラス
+/// </summary>
 class SceneBase
 {
 public:

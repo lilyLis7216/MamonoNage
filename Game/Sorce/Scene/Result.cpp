@@ -5,7 +5,7 @@ Result::Result()
     : SceneBase()
 {
     // リザルトシーン画像の読み込み
-    sceneImage = LoadGraph("asset/scene/result.png");
+    sceneImage = LoadGraph("../asset/scene/result.png");
 }
 
 Result::~Result()

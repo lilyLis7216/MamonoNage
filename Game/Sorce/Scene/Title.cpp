@@ -1,5 +1,6 @@
 #include "Title.h"
 #include "Play.h"
+#include "../Stage/Background.h"
 
 /// <summary>
 /// コンストラクタ
@@ -11,8 +12,8 @@ Title::Title()
     , bgScrollSpeed(100.0f)
 {
     // タイトル画像の読み込み
-    sceneImage = LoadGraph("asset/scene/title.png");
-    bg = nullptr;
+    sceneImage = LoadGraph("../asset/scene/title.png");
+    bg = new Background();
 }
 
 /// <summary>
@@ -23,6 +24,7 @@ Title::~Title()
     // タイトルシーン画像の後始末
     DeleteGraph(sceneImage);
     sceneImage = -1;
+    delete bg;
 }
 
 /// <summary>
@@ -61,6 +63,7 @@ SceneBase* Title::Update(float _deltaTime)
 void Title::Draw()
 {
     // 背景スクロール描画
+    bg->Draw((int)bgPos.x, (int)bgPos.y);
 
     // フェードイン
     SetDrawBlendMode(DX_BLENDGRAPHTYPE_ALPHA, fadein);
