@@ -26,8 +26,8 @@
     <Filter Include="ソース ファイル\GameObject\Player">
       <UniqueIdentifier>{98c34548-3745-474a-9ada-eeb18d9f08ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameObject\Stage">
-      <UniqueIdentifier>{186fe5dc-239a-4baa-b925-3afaec335b39}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\Stage">
+      <UniqueIdentifier>{43b5acf3-e9a8-4b8a-ae56-378c07b14a04}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -82,17 +82,23 @@
     <ClCompile Include="Collision\Collision.cpp">
       <Filter>ソース ファイル\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject\Stage\Background.cpp">
-      <Filter>ソース ファイル\GameObject\Stage</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject\Stage\Map.cpp">
-      <Filter>ソース ファイル\GameObject\Stage</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject\Stage\SkeltonBlock.cpp">
-      <Filter>ソース ファイル\GameObject\Stage</Filter>
-    </ClCompile>
     <ClCompile Include="Math\Math.cpp">
       <Filter>ソース ファイル\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\Background.cpp">
+      <Filter>ソース ファイル\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\Map.cpp">
+      <Filter>ソース ファイル\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\SkeltonBlock.cpp">
+      <Filter>ソース ファイル\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\Scroll.cpp">
+      <Filter>ソース ファイル\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\KeyMgr.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,20 +153,23 @@
     <ClInclude Include="Collision\Collision.h">
       <Filter>ソース ファイル\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Collision\CollType.h">
-      <Filter>ソース ファイル\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject\Stage\Background.h">
-      <Filter>ソース ファイル\GameObject\Stage</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject\Stage\Map.h">
-      <Filter>ソース ファイル\GameObject\Stage</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject\Stage\SkeltonBlock.h">
-      <Filter>ソース ファイル\GameObject\Stage</Filter>
-    </ClInclude>
     <ClInclude Include="Math\Math.h">
       <Filter>ソース ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\Background.h">
+      <Filter>ソース ファイル\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\Map.h">
+      <Filter>ソース ファイル\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\SkeltonBlock.h">
+      <Filter>ソース ファイル\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\Scroll.h">
+      <Filter>ソース ファイル\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\KeyMgr.h">
+      <Filter>ソース ファイル\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

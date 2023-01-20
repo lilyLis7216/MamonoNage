@@ -2,6 +2,17 @@
 
 #include "SceneBase.h"
 
+class Background;
+class Map;
+class Collision;
+class Scroll;
+//class SkeltonBlock;
+
+class Player;
+class BulletDummy;
+class Bullet;
+class BulletMgr;
+
 class Play : public SceneBase
 {
 public:
@@ -26,4 +37,26 @@ public:
     /// プレイシーンの描画処理
     /// </summary>
     void Draw() override;
+
+    /// <summary>
+    /// キャラが地面に立っているかどうか調べる
+    /// </summary>
+    void isStand();
+
+    /// <summary>
+    /// キャラがバレットを投げるまでの流れ
+    /// </summary>
+    void ShotFlow(float _deltaTime);
+
+private:
+    Background* bg;
+    Map* map;
+    Collision* collision;
+    Scroll* scroll;
+    // SkeltonBlock* block;
+
+    Player* player;
+    BulletDummy* dummy;
+    Bullet* bullet;
+    BulletMgr* bulletMgr;
 };

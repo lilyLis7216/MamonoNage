@@ -4,6 +4,7 @@
 GameObjMgr* GameObjMgr::instance = nullptr;
 
 GameObjMgr::GameObjMgr()
+    : objects()
 {
     instance = nullptr;
 }
@@ -65,7 +66,7 @@ void GameObjMgr::Release(GameObj* relObj)
 void GameObjMgr::ReleaseAllObj()
 {
     // 末尾から一時待機オブジェクトを全て削除
-    while (instance->pendingObjects.empty())
+    while (!instance->pendingObjects.empty())
     {
         delete instance->pendingObjects.back();
     }
@@ -74,7 +75,7 @@ void GameObjMgr::ReleaseAllObj()
     for (auto& tag : ObjTagAll)
     {
         // 末尾から削除
-        while (instance->objects[tag].empty())
+        while (!instance->objects[tag].empty())
         {
             delete instance->objects[tag].back();
             instance->objects[tag].pop_back();
@@ -113,15 +114,15 @@ void GameObjMgr::Update(float _deltaTime)
             }
         }
 
-        auto release = instance->objects[tag];
-        release.erase(remove_if(begin(release), end(release), [](GameObj* g) {return !g->GetAlive(); }), cend(release));
+        instance->objects[tag].erase(remove_if(begin(instance->objects[tag]), 
+            end(instance->objects[tag]), [](GameObj* g) {return !g->GetAlive(); }), cend(instance->objects[tag]));
+    }
 
-        // 死んでいるGameObjをここで完全削除
-        while (!deadObjects.empty())
-        {
-            delete deadObjects.back();
-            deadObjects.pop_back();
-        }
+    // 死んでいるGameObjをここで完全削除
+    while (!deadObjects.empty())
+    {
+        delete deadObjects.back();
+        deadObjects.pop_back();
     }
 }
 
@@ -138,5 +139,9 @@ void GameObjMgr::Draw(int offSetX, int offSetY)
 
 GameObj* GameObjMgr::GetFirstGameObj(ObjTag tag)
 {
-    return nullptr;
+    if (instance->objects[tag].size() == 0)
+    {
+        return nullptr;
+    }
+    return instance->objects[tag][0];
 }
