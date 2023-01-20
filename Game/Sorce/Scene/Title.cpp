@@ -20,13 +20,13 @@ Title::Title()
 /// </summary>
 Title::~Title()
 {
-    // タイトル画像の後始末
+    // タイトルシーン画像の後始末
     DeleteGraph(sceneImage);
     sceneImage = -1;
 }
 
 /// <summary>
-/// タイトルの更新処理
+/// タイトルシーンの更新処理
 /// </summary>
 /// <param name="_deltaTime">1フレームの経過時間</param>
 /// <returns>現在のシーンのポインタ</returns>
@@ -56,7 +56,7 @@ SceneBase* Title::Update(float _deltaTime)
 }
 
 /// <summary>
-/// タイトルの描画
+/// タイトルシーンの描画処理
 /// </summary>
 void Title::Draw()
 {

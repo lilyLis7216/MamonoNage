@@ -16,7 +16,7 @@ Result::~Result()
 }
 
 /// <summary>
-/// リザルトの更新
+/// リザルトシーンの更新処理
 /// </summary>
 /// <param name="_deltaTime">1フレームの経過時間</param>
 /// <returns>現在のシーンのポインタ</returns>
@@ -27,7 +27,7 @@ SceneBase* Result::Update(float _deltaTime)
 }
 
 /// <summary>
-/// リザルトの描画
+/// リザルトシーンの描画処理
 /// </summary>
 void Result::Draw()
 {
