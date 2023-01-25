@@ -1,8 +1,8 @@
 #include "Play.h"
 #include "../Stage/Background.h"
 #include "../Stage/Map.h"
-#include "../Collision/Collision.h"
 #include "../Stage/Scroll.h"
+#include "../Collision/MapCollision.h"
 #include "../GameObject/Player/Player.h"
 #include "../GameObject/Player/Bullet.h"
 #include "../GameObject/Player/BulletDummy.h"
@@ -23,9 +23,9 @@ Play::Play()
     //---ステージ関連インスタンス---//
     bg = new Background();
     map = new Map();
-    collision = new Collision();
     scroll = new Scroll();
     //block = new SkeltonBlock;
+    MapCollision::CreateInstance();
     
     //---プレイヤー関連インスタンス---//
     player = new Player();
@@ -43,7 +43,6 @@ Play::~Play()
 {
     delete bg;
     delete map;
-    delete collision;
     delete scroll;
     delete player;
     delete bulletMgr;
@@ -56,7 +55,7 @@ Play::~Play()
 /// <returns>現在のシーンのポインタ</returns>
 SceneBase* Play::Update(float _deltaTime)
 {
-    isStand();
+    //isStand();
     ShotFlow(_deltaTime);
 
     GameObjMgr::Update(_deltaTime);
@@ -65,6 +64,7 @@ SceneBase* Play::Update(float _deltaTime)
     // シーン遷移条件(スペースキーを押すと遷移（仮）)
     if (CheckHitKey(KEY_INPUT_SPACE))
     {
+        MapCollision::DeleteInstance();
         GameObjMgr::DeleteInstance();
         // 条件を満たしていたらリザルトシーンを生成してそのポインタを返す
         return new Result();
@@ -90,16 +90,16 @@ void Play::Draw()
     DrawFormatString(0, 0, Color, "残弾 i の値は %d です", bulletMgr->GetBulletNum());
 }
 
-void Play::isStand()
-{
-    player->SetonGround(collision->CollBox(player->GetPosition()));
-    //block->CheckPlayerHit(player);
-    if (bullet != nullptr)
-    {
-        bullet->SetonGround(collision->CollBox(bullet->GetPosition()));
-        //block->CheckBulletHit(bullet);
-    }
-}
+//void Play::isStand()
+//{
+//    player->SetonGround(collision->CollBox(player->GetPosition()));
+//    //block->CheckPlayerHit(player);
+//    if (bullet != nullptr)
+//    {
+//        bullet->SetonGround(collision->CollBox(bullet->GetPosition()));
+//        //block->CheckBulletHit(bullet);
+//    }
+//}
 
 void Play::ShotFlow(float _deltaTime)
 {

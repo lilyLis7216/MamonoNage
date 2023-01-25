@@ -1,4 +1,6 @@
 #include "Player.h"
+#include"../../Collision/Collision.h"
+#include"../../Collision/MapCollision.h"
 
 Player::Player()
     : GameObj(ObjTag::Player)
@@ -22,6 +24,7 @@ Player::Player()
     , mThrowAnimCoolTime(0.2f)
     , mThrowAnimationFlag(false)
 {
+    collision = new Collision(pos, VGet(XSize, YSize, 0), 0.0f);
 }
 
 Player::~Player()
@@ -32,6 +35,7 @@ void Player::Update(float _deltaTime)
 {
     Move(_deltaTime);
     AnimationUpdate(_deltaTime);
+    MapColEnter();
 }
 
 void Player::Draw(int offSetX, int offSetY)
@@ -44,6 +48,7 @@ void Player::Init()
     // プレイヤーの初期位置の代入
     pos.x = FirstPosX;
     pos.y = FirstPosY;
+
     // プレイヤー画像の読み込み
     LoadDivGraph("../asset/player/Idle.png", IdleAllNum, IdleXNum, IdleYNum, IdleXSize, IdleYSize, mIdle);
     LoadDivGraph("../asset/player/Run.png", RunAllNum, RunXNum, RunYNum, RunXSize, RunYSize, mRun);
@@ -63,7 +68,6 @@ void Player::Move(float _deltaTime)
         rightDir = true;
         pos.x -= RunSpeed * _deltaTime;
     }
-
     if (onGround)
     {
         if (CheckHitKey(KEY_INPUT_J))
@@ -89,6 +93,14 @@ void Player::Move(float _deltaTime)
         }
     }
     pos.y += playerVy;
+}
+
+void Player::MapColEnter()
+{
+    MapCollision* map = MapCollision::GetMapCol();
+    VECTOR ret = CalcPushBack(collision, map);
+    pos = VAdd(pos, ret);
+    ColUpdate();
 }
 
 void Player::IdleAnimation(float _deltaTime)

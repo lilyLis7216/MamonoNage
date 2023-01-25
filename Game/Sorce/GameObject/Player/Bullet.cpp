@@ -26,8 +26,8 @@ Bullet::~Bullet()
 
 void Bullet::BulletAngleSet(double mAngle)
 {
-    mBulletVX = mMovePower * cosf(mAngle * DX_PI);
-    mBulletVY = -mMovePower * sinf(mAngle * DX_PI);
+    mBulletVX = mMovePower * cosf(mAngle * DX_PI_F);
+    mBulletVY = -mMovePower * sinf(mAngle * DX_PI_F);
 
     mBulletPower.x = (float)mBulletVX;
     mBulletPower.y = (float)mBulletVY;

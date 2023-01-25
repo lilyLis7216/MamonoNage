@@ -2,6 +2,7 @@
 
 #include "ObjTag.h"
 #include "DxLib.h"
+#include"../Collision/Collision.h"
 
 /// <summary>
 /// ゲームオブジェクトクラス
@@ -41,7 +42,10 @@ public:
     void SetAlive(bool set) { alive = set; }
     bool GetAlive() const { return alive; }
 
+    virtual void  MapColEnter() {}              // マップとぶつかったときのリアクション
 protected:
+    void ColUpdate();                           // 当たり判定位置の更新
+
     // タグ
     ObjTag tag;
 
@@ -56,4 +60,6 @@ protected:
 
     // 描画用ハンドル
     int handle;
+
+    class Collision* collision = nullptr;
 };

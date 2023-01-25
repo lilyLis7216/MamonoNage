@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Collision\Collision.cpp" />
+    <ClCompile Include="Collision\MapCollision.cpp" />
     <ClCompile Include="GameObject\Enemy\Bat.cpp" />
     <ClCompile Include="GameObject\Enemy\Golem.cpp" />
     <ClCompile Include="GameObject\Enemy\Monster.cpp" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
+    <ClInclude Include="Collision\MapCollision.h" />
     <ClInclude Include="GameObject\Enemy\Bat.h" />
     <ClInclude Include="GameObject\Enemy\Golem.h" />
     <ClInclude Include="GameObject\Enemy\Monster.h" />

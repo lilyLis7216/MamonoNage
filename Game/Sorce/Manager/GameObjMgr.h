@@ -58,6 +58,7 @@ public:
     static GameObj* GetFirstGameObj(ObjTag tag);
 
 
+    static void Collision();
 private:
     /// <summary>
     /// コンストラクタ（シングルトン）

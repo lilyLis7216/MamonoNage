@@ -4,8 +4,8 @@
 
 class Background;
 class Map;
-class Collision;
 class Scroll;
+class MapCollision;
 //class SkeltonBlock;
 
 class Player;
@@ -38,10 +38,10 @@ public:
     /// </summary>
     void Draw() override;
 
-    /// <summary>
-    /// キャラが地面に立っているかどうか調べる
-    /// </summary>
-    void isStand();
+    ///// <summary>
+    ///// キャラが地面に立っているかどうか調べる
+    ///// </summary>
+    //void isStand();
 
     /// <summary>
     /// キャラがバレットを投げるまでの流れ
@@ -51,8 +51,8 @@ public:
 private:
     Background* bg;
     Map* map;
-    Collision* collision;
     Scroll* scroll;
+    MapCollision* mapcol=nullptr;
     // SkeltonBlock* block;
 
     Player* player;

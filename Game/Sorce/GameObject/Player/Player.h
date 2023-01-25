@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../GameObj.h"
+#include"../../Manager/GameObjMgr.h"
 
 //プレイヤーの初期位置
 const int FirstPosX = 400;
@@ -62,8 +63,6 @@ public:
 
     void Move(float _deltaTime);
 
-    void SetonGround(bool set) { onGround = set; }
-
     // キャラの座標
     VECTOR& GetPosition() { return pos; }
 
@@ -90,6 +89,7 @@ public:
     //描画制御
     void AnimationControl();
 
+    void MapColEnter()override;
 private:
     float playerVy;
     bool onGround;
@@ -121,4 +121,5 @@ private:
     int mThrowAnimation;
     float mThrowAnimCoolTime;
     bool mThrowAnimationFlag;
+
 };

@@ -13,3 +13,11 @@ GameObj::~GameObj()
 {
     // ˆ—‚È‚µ
 }
+
+void GameObj::ColUpdate()
+{
+    if (collision)
+    {
+        collision->Move(pos);
+    }
+}

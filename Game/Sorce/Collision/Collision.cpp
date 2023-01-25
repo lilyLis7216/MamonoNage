@@ -1,94 +1,34 @@
 #include "Collision.h"
 #include "../GameObject/Player/Player.h"
+#include"../GameObject/GameObj.h"
+#include"MapCollision.h"
 
 Collision::Collision()
-    : marker(0)
-    , rawNum(0)
-    , columnNum(0)
-    , num(0)
-    , eofFlag(false)
+    : colPos()
+    , colScale()
+    , colRad()
 {
-    //当たり判定チェック用画像
-    LoadDivGraph("../asset/mapArufa/collision_new_check.png", 5, 5, 1, BOX_WIDTH, BOX_HEIGHT, collBoxHandle);
+}
 
-    FILE* fp;
-
-    //fopen_s関数でcsvファイルを読み取り形式で開く
-    fopen_s(&fp, "../asset/mapArufa/Maoumap_collision.csv", "r");
-
-    //fpが空の時は
-    if (fp == NULL)
-    {
-        //デバッグ中止
-        DebugBreak();
-    }
-
-    //memset関数でメモリにbufをセット、sizeof演算子で要素数を決める
-    memset(buf, 0, sizeof(buf));
-
-    while (!eofFlag)
-    {
-        while (!eofFlag)
-        {
-            //fpから文字を読んでmarkerに格納
-            marker = fgetc(fp);
-
-            //EOFを検出したらフラグを立てる
-            if (marker == EOF)
-            {
-                eofFlag = true;
-            }
-
-            //区切り化改行でなければ
-            if (marker != ',' && marker != '\n')
-            {
-                //bufに連結して、const char関数で書き換える
-                strcat_s(buf, (const char*)&marker);
-            }
-            else
-            {
-                //bufをint型に直してnumに代入
-                num = atoi(buf);
-
-                //num番号のハンドルを取得
-                coll[columnNum][rawNum].boxHandle = collBoxHandle[num];
-
-                //memset関数でメモリにbufをセット、sizeof演算子で要素数を決める
-                memset(buf, 0, sizeof(buf));
-
-                //区切りか改行なのでループで抜ける
-                break;
-            }
-        }
-
-        if (marker == ',')
-        {
-            columnNum++;
-        }
-
-        if (marker == '\n')
-        {
-            //区切りは列を増やし、改行は行を増やして列を0にする
-            rawNum++;
-            columnNum = 0;
-        }
-    }
-
-    //ファイルを閉じる
-    fclose(fp);
+Collision::Collision(const VECTOR& objPos, const VECTOR& objScale, const float objRad)
+    :colPos(objPos)
+    ,colScale(objScale)
+    ,colRad(objRad)
+{
 }
 
 Collision::~Collision()
 {
 }
 
-bool Collision::CollBox(VECTOR& objPos)
+VECTOR CalcPushBack(Collision* colObj, MapCollision* mapCol)
 {
+    VECTOR pushBack = { 0,0,0 };
     //オブジェクトBOXの頂点座標//
-    int objLX = (int)(objPos.x - XSize / 4);
-    int objLY = (int)(objPos.y - YSize / 4);
-    int objRX = (int)(objPos.x + XSize / 4);
-    int objRY = (int)(objPos.y + YSize / 1.5f);
+    int objLX = (int)(colObj->ColGetPos().x -colObj->ColGetScale().x);
+    int objLY = (int)(colObj->ColGetPos().y -colObj->ColGetScale().y);
+    int objRX = (int)(colObj->ColGetPos().x + colObj->ColGetScale().x);
+    int objRY = (int)(colObj->ColGetPos().y + colObj->ColGetScale().y);
 
     //現在のタイル位置//
     int tileLX = objLX / BOX_WIDTH;
@@ -112,32 +52,30 @@ bool Collision::CollBox(VECTOR& objPos)
             int by1 = boxLY - objRY;
             int by2 = boxRY - objLY;
 
+            //押し出し方向を決める//
             int bx = (abs(bx1) < abs(bx2)) ? bx1 : bx2;
             int by = (abs(by1) < abs(by2)) ? by1 : by2;
-            if (coll[jx][iy].boxHandle != collBoxHandle[0])
+
+            if (!mapCol->HitBlockType(jx,iy,0))
             {
                 if (abs(bx) < abs(by))
                 {
-                    if (coll[jx - 1][iy].boxHandle == collBoxHandle[0] ||
-                        coll[jx + 1][iy].boxHandle == collBoxHandle[0])
+                    if (mapCol->HitBlockType(jx - 1, iy, 0) ||
+                        mapCol->HitBlockType(jx + 1, iy, 0))
                     {
-                        objPos.x += bx;
+                        pushBack.x = (float)bx;
                     }
                 }
                 else
                 {
-                    if (coll[jx][iy - 1].boxHandle == collBoxHandle[0] ||
-                        coll[jx][iy + 1].boxHandle == collBoxHandle[0])
+                    if (mapCol->HitBlockType(jx, iy - 1, 0) ||
+                        mapCol->HitBlockType(jx, iy + 1, 0))
                     {
-                        objPos.y += by;
-                        if (by <= 0)
-                        {
-                            return true;
-                        }
+                        pushBack.y = (float)by;
                     }
                 }
             }
         }
     }
-    return false;
+    return pushBack;
 }

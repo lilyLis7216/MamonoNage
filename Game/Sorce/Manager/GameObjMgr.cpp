@@ -1,4 +1,5 @@
 #include "GameObjMgr.h"
+#include"../Collision/MapCollision.h"
 
 // GameObjMgr実体へのポインタ定義
 GameObjMgr* GameObjMgr::instance = nullptr;
@@ -134,6 +135,14 @@ void GameObjMgr::Draw(int offSetX, int offSetY)
         {
             instance->objects[tag][i]->Draw(offSetX, offSetY);
         }
+    }
+}
+
+void GameObjMgr::Collision()
+{
+    for (int plynum = 0; plynum < instance->objects[ObjTag::Player].size(); ++plynum)
+    {
+        instance->objects[ObjTag::Player][plynum]->MapColEnter();
     }
 }
 
