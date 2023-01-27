@@ -24,6 +24,7 @@ public:
 
     VECTOR& GetPosition() { return pos; }                              //’e‚ÌˆÊ’u‚ğ‚Á‚Ä‚­‚é
 
+    void MapColEnter()override;
 private:
     int     mRotation;                       //‰ñ“]Šp
     float   mMovePower;                      //’e‚Ì”­Ë‚Ì—Í

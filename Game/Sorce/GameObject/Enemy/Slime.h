@@ -27,7 +27,7 @@ public:
     /// <summary>
     /// ƒXƒ‰ƒCƒ€‚Ì•`‰æˆ—
     /// </summary>
-    void Draw(int, int) override;
+    void Draw(int offSetX, int offSetY) override;
 
 private:
     // ó‘Ô

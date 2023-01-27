@@ -25,6 +25,8 @@ Play::Play()
     map = new Map();
     scroll = new Scroll();
     //block = new SkeltonBlock;
+
+    //---当たり判定関連インスタンス---//
     MapCollision::CreateInstance();
     
     //---プレイヤー関連インスタンス---//

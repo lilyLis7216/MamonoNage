@@ -68,6 +68,7 @@ void Player::Move(float _deltaTime)
         rightDir = true;
         pos.x -= RunSpeed * _deltaTime;
     }
+
     if (onGround)
     {
         if (CheckHitKey(KEY_INPUT_J))
@@ -97,9 +98,9 @@ void Player::Move(float _deltaTime)
 
 void Player::MapColEnter()
 {
-    MapCollision* map = MapCollision::GetMapCol();
-    VECTOR ret = CalcPushBack(collision, map);
+    VECTOR ret = CalcPushBack(collision, MapCollision::GetMapCol());
     pos = VAdd(pos, ret);
+    onGround = collision->OnGround();
     ColUpdate();
 }
 

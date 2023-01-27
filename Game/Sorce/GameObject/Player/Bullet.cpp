@@ -1,6 +1,8 @@
 #include "Bullet.h"
 #include "Player.h"
 #include <math.h>
+#include"../../Collision/Collision.h"
+#include"../../Collision/MapCollision.h"
 
 Bullet::Bullet(Player* player)
     : GameObj(ObjTag::Bullet)
@@ -18,6 +20,8 @@ Bullet::Bullet(Player* player)
     }
     pos.x = player->GetPos().x;
     pos.y = player->GetPos().y + -10;
+
+    collision = new Collision(pos, VGet(32, 32, 0), 0.0f);
 }
 
 Bullet::~Bullet()
@@ -66,12 +70,21 @@ void Bullet::BulletMove()
 void Bullet::Update(float deltaTime)
 {
     BulletMove();
+    MapColEnter();
 }
 
 void Bullet::Draw(int offSetX, int offSetY)
 {
     DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 0.1f, mRotation, handle, alive, rightDir);
     mRotation++;
+}
+
+void Bullet::MapColEnter()
+{
+    VECTOR ret = CalcPushBack(collision, MapCollision::GetMapCol());
+    pos = VAdd(pos, ret);
+    onGround = collision->OnGround();
+    ColUpdate();
 }
 
 void Bullet::BulletNumberAdd(int ButtonStatus)
