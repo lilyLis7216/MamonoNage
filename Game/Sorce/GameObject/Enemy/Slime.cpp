@@ -60,9 +60,9 @@ void Slime::Update(float _deltaTime)
 /// <summary>
 /// ƒXƒ‰ƒCƒ€‚Ì•`‰æˆ—
 /// </summary>
-void Slime::Draw(int none1, int none2)
+void Slime::Draw(int offSetX, int offSetY)
 {
-    DrawRotaGraph((int)pos.x, (int)pos.y, 2, 0, handle, TRUE, rightDir);
+    DrawRotaGraph((int)pos.x-offSetX, (int)pos.y-offSetY, 2, 0, handle, TRUE, rightDir);
 }
 
 /// <summary>

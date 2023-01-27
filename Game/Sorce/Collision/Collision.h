@@ -26,6 +26,8 @@ public:
     VECTOR ColGetScale() { return colScale; }
     float ColGetRad() { return colRad; }
 
+    void SetOnGround(bool onground) { onGround= onground; }
+    bool OnGround() { return onGround; }
 private:
 
 
@@ -34,6 +36,8 @@ private:
     VECTOR colScale;
 
     float colRad;
+
+    bool onGround;
 };
 
 

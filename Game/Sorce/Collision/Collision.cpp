@@ -7,6 +7,7 @@ Collision::Collision()
     : colPos()
     , colScale()
     , colRad()
+    ,onGround(false)
 {
 }
 
@@ -14,6 +15,7 @@ Collision::Collision(const VECTOR& objPos, const VECTOR& objScale, const float o
     :colPos(objPos)
     ,colScale(objScale)
     ,colRad(objRad)
+    ,onGround(false)
 {
 }
 
@@ -24,6 +26,7 @@ Collision::~Collision()
 VECTOR CalcPushBack(Collision* colObj, MapCollision* mapCol)
 {
     VECTOR pushBack = { 0,0,0 };
+    colObj->SetOnGround(false);
     //オブジェクトBOXの頂点座標//
     int objLX = (int)(colObj->ColGetPos().x -colObj->ColGetScale().x);
     int objLY = (int)(colObj->ColGetPos().y -colObj->ColGetScale().y);
@@ -72,8 +75,13 @@ VECTOR CalcPushBack(Collision* colObj, MapCollision* mapCol)
                         mapCol->HitBlockType(jx, iy + 1, 0))
                     {
                         pushBack.y = (float)by;
+                        if (by <= 0)
+                        {
+                            colObj->SetOnGround(true);
+                        }
                     }
                 }
+
             }
         }
     }
