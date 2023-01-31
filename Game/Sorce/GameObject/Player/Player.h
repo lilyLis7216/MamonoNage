@@ -18,35 +18,35 @@ const float maxFallSpeed = 10.0f;   // 最大落下速度
 
 ////プレイヤーのサイズ
 const int XSize = 64;
-const int YSize = 64;
+const int YSize = 128;
 
 //待機アニメーション
 const int IdleAllNum = 2;
 const int IdleXNum = 2;
 const int IdleYNum = 1;
-const int IdleXSize = 47 / IdleXNum;
-const int IdleYSize = 50;
+//const int IdleXSize = 47 / IdleXNum;
+//const int IdleYSize = 50;
 
 //走りアニメーション
 const int RunAllNum = 4;
 const int RunXNum = 4;
 const int RunYNum = 1;
-const int RunXSize = 150 / RunXNum;
-const int RunYSize = 82;
+//const int RunXSize = 150 / RunXNum;
+//const int RunYSize = 82;
 
 //ジャンプアニメーション
 const int JumpAllNum = 3;
 const int JumpXNum = 3;
 const int JumpYNum = 1;
-const int JumpXSize = 150 / JumpXNum;
-const int JumpYSize = 106;
+//const int JumpXSize = 150 / JumpXNum;
+//const int JumpYSize = 106;
 
 //投げるアニメーション
 const int ThrowAllNum = 6;
 const int ThrowXNum = 6;
 const int ThrowYNum = 1;
-const int ThrowXSize = 150 / ThrowXNum;
-const int ThrowYSize = 53;
+//const int ThrowXSize = 150 / ThrowXNum;
+//const int ThrowYSize = 53;
 
 class Player : public GameObj
 {

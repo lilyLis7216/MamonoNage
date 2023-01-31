@@ -40,7 +40,7 @@ void Player::Update(float _deltaTime)
 
 void Player::Draw(int offSetX, int offSetY)
 {
-    DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 2, 0, handle, TRUE, rightDir);
+    DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1, 0, handle, TRUE, rightDir);
 }
 
 void Player::Init()
@@ -50,10 +50,12 @@ void Player::Init()
     pos.y = FirstPosY;
 
     // ÉvÉåÉCÉÑÅ[âÊëúÇÃì«Ç›çûÇ›
-    LoadDivGraph("../asset/player/Idle.png", IdleAllNum, IdleXNum, IdleYNum, IdleXSize, IdleYSize, mIdle);
-    LoadDivGraph("../asset/player/Run.png", RunAllNum, RunXNum, RunYNum, RunXSize, RunYSize, mRun);
-    LoadDivGraph("../asset/player/Jump.png", JumpAllNum, JumpXNum, JumpYNum, JumpXSize, JumpYSize, mJump);
-    LoadDivGraph("../asset/player/Throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, ThrowXSize, ThrowYSize, mThrow);
+    LoadDivGraph("../asset/player/_idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
+    LoadDivGraph("../asset/player/_run.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
+    LoadDivGraph("../asset/player/_jump.png", JumpAllNum, JumpXNum, JumpYNum, XSize, YSize, mJump);
+    LoadDivGraph("../asset/player/_throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
+
+
 }
 
 void Player::Move(float _deltaTime)
