@@ -57,14 +57,15 @@ void Player::Init()
     LoadDivGraph("../asset/player/_throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow, TRUE);
     LoadDivGraph("../asset/player/_damage.png", 2, 2, 1, XSize,YSize, mDamage, TRUE);
 
-    // //// コウモリ画像の読み込み
-    //LoadDivGraph("../asset/enemy/bat/_damage.png", IdleAllNum, IdleXNum, IdleYNum, EnemyXSize, EnemyYSize, mIdle);
-    //LoadDivGraph("../asset/enemy/bat/_move.png", RunAllNum, RunXNum, RunYNum, EnemyXSize, EnemyYSize, mEnemyRun);
-    //LoadDivGraph("../asset/enemy/bat/_attack.png", 4, 4, 1, EnemyXSize, EnemyYSize, mEnemyJump);
-    //LoadDivGraph("../asset/enemy/bat/_damage.png", 2, 2, 1, EnemyXSize, EnemyYSize, mEnemyDamage);
-    // 
-    //スケルトン画像の読み込み
-    //LoadDivGraph("../asset/enemy/bat/_move.png", RunAllNum, RunXNum, RunYNum, EnemyXSize, EnemyYSize, mRun);
+    //// コウモリ画像の読み込み
+    /*LoadDivGraph("../asset/enemy/bat/_move.png", RunAllNum, RunXNum, RunYNum, EnemyXSize, EnemyYSize, mEnemyRun, TRUE);
+    LoadDivGraph("../asset/enemy/bat/_attack.png", 4, 4, 1, EnemyXSize, EnemyYSize, mEnemyAttack, TRUE);
+    LoadDivGraph("../asset/enemy/bat/_damage.png", 2, 2, 1, EnemyXSize, EnemyYSize, mEnemyDamage, TRUE);*/
+     
+    ////スケルトン画像の読み込み
+    //LoadDivGraph("../asset/enemy/skeleton/skeleton_move.png", RunAllNum, RunXNum, RunYNum, EnemyXSize, EnemyYSize, mEnemyRun, TRUE);
+    //LoadDivGraph("../asset/enemy/skeleton/skeleton_attack.png", 4, 4, 1, EnemyXSize, EnemyYSize, mEnemyAttack, TRUE);
+    //LoadDivGraph("../asset/enemy/skeleton/skeleton_damage.png", 2, 2, 1, EnemyXSize, EnemyYSize, mEnemyDamage, TRUE);
 }
 
 void Player::Move(float _deltaTime)
@@ -209,6 +210,63 @@ void Player::DamageAnimation(float _deltaTime)
         mDamageAnimation %= DamageAllNum;
     }
 }
+/// <summary>
+/// 
+/// </summary>
+/// <param name="_deltaTime"></param>
+void Player::EnemyRunAnimation(float _deltaTime)
+{
+    mRunAnimCoolTime -= _deltaTime;
+    if (mRunAnimCoolTime <= 0.0f)
+    {
+        mEnemyRunAnimation++;
+        if (mEnemyRunAnimation >= EnemyRunAllNum)
+        {
+            mEnemyRunAnimation = 0;
+        }
+        mRunAnimCoolTime = 0.2f;
+        mEnemyRunAnimation %= EnemyRunAllNum;
+    }
+}
+
+void Player::EnemyDamageAnimation(float _deltaTime)
+{
+    if (KeyMgr::KeyStatusD())
+    {
+        mDamageAnimationFlag = TRUE;
+    }
+    else
+    {
+        mDamageAnimationFlag = FALSE;
+    }
+
+    mDamageAnimCoolTime -= _deltaTime;
+    if (mDamageAnimCoolTime <= 0.0f)
+    {
+        mEnemyDamageAnimation++;
+        if (mEnemyDamageAnimation >= EnemyDamageAllNum)
+        {
+            mEnemyDamageAnimation = 0;
+        }
+        mDamageAnimCoolTime = 1.0f;
+        mEnemyDamageAnimation %= EnemyDamageAllNum;
+    }
+}
+
+void Player::EnemyAttackAnimation(float _deltaTime)
+{
+    mIdleAnimCoolTime -= _deltaTime;
+    if (mIdleAnimCoolTime <= 0.0f)
+    {
+        mEnemyAttackAnimation++;
+        if (mEnemyAttackAnimation >= EnemyAttackAllNum)
+        {
+            mEnemyAttackAnimation = 0;
+        }
+        mIdleAnimCoolTime = 0.2f;
+        mEnemyAttackAnimation %= EnemyAttackAllNum;
+    }
+}
 
 void Player::AnimationUpdate(float _deltaTime)
 {
@@ -217,6 +275,10 @@ void Player::AnimationUpdate(float _deltaTime)
     ThrowAnimation(_deltaTime);
     JumpAnimation(_deltaTime);
     DamageAnimation(_deltaTime);
+    ////エネミー確認用
+    //EnemyRunAnimation(_deltaTime);
+    //EnemyDamageAnimation(_deltaTime);
+    //EnemyAttackAnimation(_deltaTime);
     AnimationControl();
 }
 
@@ -225,6 +287,8 @@ void Player::AnimationControl()
     if (mDamageAnimationFlag)
     {
         handle = mDamage[mDamageAnimation];
+        ////エネミー用
+        //handle = mEnemyDamage[mEnemyDamageAnimation];
     }
     else if (mThrowAnimationFlag)
     {
@@ -237,9 +301,12 @@ void Player::AnimationControl()
     else if ((CheckHitKey(KEY_INPUT_RIGHT) && onGround) || (CheckHitKey(KEY_INPUT_LEFT) && onGround))
     {
         handle = mRun[mRunAnimation];
+        ////エネミーアニメーション確認用
+        //handle = mEnemyRun[mEnemyRunAnimation];
     }
     else
     {
         handle = mIdle[mIdleAnimation];
+        //handle = mEnemyAttack[mEnemyAttackAnimation];
     }
 }
