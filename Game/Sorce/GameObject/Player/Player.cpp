@@ -1,6 +1,7 @@
 #include "Player.h"
 #include"../../Collision/Collision.h"
 #include"../../Collision/MapCollision.h"
+#include"../../Manager/KeyMgr.h"
 
 Player::Player()
     : GameObj(ObjTag::Player)
@@ -40,7 +41,7 @@ void Player::Update(float _deltaTime)
 
 void Player::Draw(int offSetX, int offSetY)
 {
-    DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1, 0, handle, TRUE, rightDir);
+    DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1.5, 0, handle, TRUE, rightDir);
 }
 
 void Player::Init()
@@ -50,12 +51,20 @@ void Player::Init()
     pos.y = FirstPosY;
 
     // プレイヤー画像の読み込み
-    LoadDivGraph("../asset/player/_idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
-    LoadDivGraph("../asset/player/_run.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
-    LoadDivGraph("../asset/player/_jump.png", JumpAllNum, JumpXNum, JumpYNum, XSize, YSize, mJump);
-    LoadDivGraph("../asset/player/_throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
+    LoadDivGraph("../asset/player/_idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle,TRUE);
+    LoadDivGraph("../asset/player/_run.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun,TRUE);
+    LoadDivGraph("../asset/player/_jump.png", JumpAllNum, JumpXNum, JumpYNum, XSize, YSize, mJump, TRUE);
+    LoadDivGraph("../asset/player/_throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow, TRUE);
+    LoadDivGraph("../asset/player/_damage.png", 2, 2, 1, XSize,YSize, mDamage, TRUE);
 
-
+    // //// コウモリ画像の読み込み
+    //LoadDivGraph("../asset/enemy/bat/_damage.png", IdleAllNum, IdleXNum, IdleYNum, EnemyXSize, EnemyYSize, mIdle);
+    //LoadDivGraph("../asset/enemy/bat/_move.png", RunAllNum, RunXNum, RunYNum, EnemyXSize, EnemyYSize, mEnemyRun);
+    //LoadDivGraph("../asset/enemy/bat/_attack.png", 4, 4, 1, EnemyXSize, EnemyYSize, mEnemyJump);
+    //LoadDivGraph("../asset/enemy/bat/_damage.png", 2, 2, 1, EnemyXSize, EnemyYSize, mEnemyDamage);
+    // 
+    //スケルトン画像の読み込み
+    //LoadDivGraph("../asset/enemy/bat/_move.png", RunAllNum, RunXNum, RunYNum, EnemyXSize, EnemyYSize, mRun);
 }
 
 void Player::Move(float _deltaTime)
@@ -177,18 +186,47 @@ void Player::JumpAnimation(float _deltaTime)
     }
 }
 
+void Player::DamageAnimation(float _deltaTime)
+{
+    if(KeyMgr::KeyStatusD())
+    {
+        mDamageAnimationFlag = TRUE;
+    }
+    else
+    {
+        mDamageAnimationFlag = FALSE;
+    }
+
+    mDamageAnimCoolTime -= _deltaTime;
+    if (mDamageAnimCoolTime <= 0.0f)
+    {
+        mDamageAnimation++;
+        if (mDamageAnimation >= DamageAllNum)
+        {
+            mDamageAnimation = 0;
+        }
+        mDamageAnimCoolTime = 1.0f;
+        mDamageAnimation %= DamageAllNum;
+    }
+}
+
 void Player::AnimationUpdate(float _deltaTime)
 {
     IdleAnimation(_deltaTime);
     RunAnimation(_deltaTime);
     ThrowAnimation(_deltaTime);
     JumpAnimation(_deltaTime);
+    DamageAnimation(_deltaTime);
     AnimationControl();
 }
 
 void Player::AnimationControl()
 {
-    if (mThrowAnimationFlag)
+    if (mDamageAnimationFlag)
+    {
+        handle = mDamage[mDamageAnimation];
+    }
+    else if (mThrowAnimationFlag)
     {
         handle = mThrow[mThrowAnimation];
     }

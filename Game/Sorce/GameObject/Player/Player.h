@@ -24,29 +24,34 @@ const int YSize = 128;
 const int IdleAllNum = 2;
 const int IdleXNum = 2;
 const int IdleYNum = 1;
-//const int IdleXSize = 47 / IdleXNum;
-//const int IdleYSize = 50;
-
 //走りアニメーション
 const int RunAllNum = 4;
 const int RunXNum = 4;
 const int RunYNum = 1;
-//const int RunXSize = 150 / RunXNum;
-//const int RunYSize = 82;
-
 //ジャンプアニメーション
 const int JumpAllNum = 3;
 const int JumpXNum = 3;
 const int JumpYNum = 1;
-//const int JumpXSize = 150 / JumpXNum;
-//const int JumpYSize = 106;
-
 //投げるアニメーション
 const int ThrowAllNum = 6;
 const int ThrowXNum = 6;
 const int ThrowYNum = 1;
-//const int ThrowXSize = 150 / ThrowXNum;
-//const int ThrowYSize = 53;
+//被ダメージアニメーション
+const int DamageAllNum = 2;
+const int DamageXNum = 2;
+const int DamageYNum = 1;
+
+/// <summary>
+/// enemyAnimation
+/// </summary>
+//エネミーのアニメーション確認用
+const int EnemyXSize = 64;
+const int EnemyYSize = 64;
+
+const int EnemyRunAllNum = 4;
+const int EnemyAttackAllNum = 4;
+const int EnemyDamageAllNum = 2;
+
 
 class Player : public GameObj
 {
@@ -82,6 +87,9 @@ public:
 
     //ジャンプアニメーション設定
     void JumpAnimation(float _deltaTime);
+
+    //被ダメージアニメーション設定
+    void DamageAnimation(float _deltaTime);
 
     // アニメーション制御
     void AnimationUpdate(float _deltaTime);
@@ -122,4 +130,14 @@ private:
     float mThrowAnimCoolTime;
     bool mThrowAnimationFlag;
 
+    //被ダメージアニメーション関連
+    int mDamage[DamageAllNum]={-1};
+    int mDamageAnimation=0;
+    float mDamageAnimCoolTime=1.0f;
+    bool mDamageAnimationFlag=FALSE;
+
+    //エネミー確認用
+    int EnemyRun[EnemyRunAllNum]={-1};
+    int mEnemyRunAnimation=0;
+    float mEnemyRunAnimCoolTime=2.0f;
 };
