@@ -49,8 +49,16 @@ const int EnemyXSize = 64;
 const int EnemyYSize = 64;
 
 const int EnemyRunAllNum = 4;
+const int EnemyRunXNum = 4;
+const int EnemyRunYNum = 1;
+
 const int EnemyAttackAllNum = 4;
+const int EnemyAttackXNum = 4;
+const int EnemyAttackYNum = 1;
+
 const int EnemyDamageAllNum = 2;
+const int EnemyDamageXNum = 2;
+const int EnemyDamageYNum = 1;
 
 
 class Player : public GameObj
@@ -80,7 +88,7 @@ public:
 
     // 走りアニメーション設定
     void RunAnimation(float _deltaTime);
-
+ 
     // 投げアニメーション設定
     void ThrowAnimation(float _deltaTime);
     void SetThrowAnimationFlag(bool Status) { mThrowAnimationFlag = Status; }
@@ -90,6 +98,12 @@ public:
 
     //被ダメージアニメーション設定
     void DamageAnimation(float _deltaTime);
+
+    // エネミーアニメーション確認用
+    void EnemyRunAnimation(float _deltaTime);
+    void EnemyDamageAnimation(float _deltaTime);
+    void EnemyAttackAnimation(float _deltaTime);
+
 
     // アニメーション制御
     void AnimationUpdate(float _deltaTime);
@@ -137,7 +151,14 @@ private:
     bool mDamageAnimationFlag=FALSE;
 
     //エネミー確認用
-    int EnemyRun[EnemyRunAllNum]={-1};
+    int mEnemyRun[EnemyRunAllNum]={-1};
     int mEnemyRunAnimation=0;
-    float mEnemyRunAnimCoolTime=2.0f;
+
+    //エネミーアタック
+    int mEnemyAttack[EnemyAttackAllNum] = { -1 };
+    int mEnemyAttackAnimation = 0;
+
+    //エネミーダメージ
+    int mEnemyDamage[EnemyDamageAllNum] = { -1 };
+    int mEnemyDamageAnimation = 0;
 };
