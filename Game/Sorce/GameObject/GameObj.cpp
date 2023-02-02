@@ -9,6 +9,15 @@ GameObj::GameObj(ObjTag setTag)
 {
 }
 
+GameObj::GameObj(ObjTag setTag,VECTOR pos)
+    : tag(setTag)
+    , pos(pos)
+    , alive(true)
+    , rightDir(true)
+    , handle(-1)
+{
+}
+
 GameObj::~GameObj()
 {
     // èàóùÇ»Çµ

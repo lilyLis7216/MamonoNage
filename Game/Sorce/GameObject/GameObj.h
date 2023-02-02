@@ -17,6 +17,13 @@ public:
     GameObj(ObjTag setTag);
 
     /// <summary>
+    /// コンストラクタ
+    /// </summary>
+    /// <param name="setTag">オブジェクトに設定するタグ
+    /// <param name="pos">初期座標</param>
+    GameObj(ObjTag setTag,VECTOR pos);
+
+    /// <summary>
     /// 仮想デストラクタ
     /// </summary>
     virtual ~GameObj();

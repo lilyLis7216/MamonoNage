@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Monster.h"
+#include"../../Manager/GameObjMgr.h"
 
 /// <summary>
 /// スライムクラス（Monster継承）
@@ -12,6 +13,12 @@ public:
     /// コンストラクタ
     /// </summary>
     Slime();
+
+    /// <summary>
+    /// コンストラクタ
+    /// </summary>
+    /// <param name="pos">初期座標</param>
+    Slime(VECTOR pos);
 
     /// <summary>
     /// デストラクタ

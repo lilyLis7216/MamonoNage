@@ -28,10 +28,10 @@ VECTOR CalcPushBack(Collision* colObj, MapCollision* mapCol)
     VECTOR pushBack = { 0,0,0 };
     colObj->SetOnGround(false);
     //オブジェクトBOXの頂点座標//
-    int objLX = (int)(colObj->ColGetPos().x -colObj->ColGetScale().x);
-    int objLY = (int)(colObj->ColGetPos().y -colObj->ColGetScale().y);
-    int objRX = (int)(colObj->ColGetPos().x + colObj->ColGetScale().x);
-    int objRY = (int)(colObj->ColGetPos().y + colObj->ColGetScale().y);
+    int objLX = (int)(colObj->ColGetPos().x -colObj->ColGetScale().x/1.5f);
+    int objLY = (int)(colObj->ColGetPos().y -colObj->ColGetScale().y/2.0f);
+    int objRX = (int)(colObj->ColGetPos().x + colObj->ColGetScale().x/1.5f);
+    int objRY = (int)(colObj->ColGetPos().y + colObj->ColGetScale().y/1.5f);
 
     //現在のタイル位置//
     int tileLX = objLX / BOX_WIDTH;

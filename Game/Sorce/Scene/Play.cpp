@@ -6,6 +6,7 @@
 #include "../GameObject/Player/Player.h"
 #include "../GameObject/Player/Bullet.h"
 #include "../GameObject/Player/BulletDummy.h"
+#include "../GameObject/Enemy/Slime.h"
 #include "../Manager/BulletMgr.h"
 #include "../Manager/GameObjMgr.h"
 #include "../Manager/KeyMgr.h"
@@ -20,6 +21,8 @@ Play::Play()
     , dummy()
     , bullet()
 {
+    GameObjMgr::CreateInstance();
+
     //---ステージ関連インスタンス---//
     bg = new Background();
     map = new Map();
@@ -32,10 +35,13 @@ Play::Play()
     //---プレイヤー関連インスタンス---//
     player = new Player();
     bulletMgr = new BulletMgr();
-    
-    GameObjMgr::CreateInstance();
     player->Init();
     GameObjMgr::Entry(player);
+
+    //---エネミー関連インスタンス--//
+    GameObjMgr::Entry(new Slime(VGet(50, 50, 0)));
+    GameObjMgr::Entry(new Slime(VGet(500, 500, 0)));
+
 }
 
 /// <summary>
