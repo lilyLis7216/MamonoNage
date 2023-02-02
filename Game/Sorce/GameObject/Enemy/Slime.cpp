@@ -14,6 +14,19 @@ Slime::Slime()
 }
 
 /// <summary>
+/// コンストラクタ
+/// </summary>
+Slime::Slime(VECTOR pos)
+    : Monster(pos)
+    , state(IDLE)
+    , atkState(NONE)
+{
+    pos = VGet(0, 0, 0);
+    speed = 200.0f;
+    handle = LoadGraph("../asset/enemy/slime.png");
+}
+
+/// <summary>
 /// デストラクタ
 /// </summary>
 Slime::~Slime()
@@ -35,10 +48,9 @@ void Slime::Update(float _deltaTime)
     if (state != DEAD)
     {
         // プレイヤーの座標を持ってくる
-        // GameObject* player = GetFirstGameObject(Player);
+        GameObj* player =GameObjMgr::GetFirstGameObj(ObjTag::Player);
 
-        // bool find=IsFind();
-        bool find = false;
+         bool find=IsFind(player->GetPos().x);
 
         // プレイヤーを見つけていたら
         if (find)

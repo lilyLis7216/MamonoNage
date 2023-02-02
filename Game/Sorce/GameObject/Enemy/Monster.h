@@ -14,6 +14,12 @@ public:
     Monster();
 
     /// <summary>
+    /// コンストラクタ
+    /// </summary>
+    /// <param name="pos">初期座標</param>
+    Monster(VECTOR pos);
+
+    /// <summary>
     /// 仮想デストラクタ
     /// </summary>
     virtual ~Monster();
