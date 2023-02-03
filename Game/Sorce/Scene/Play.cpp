@@ -7,6 +7,8 @@
 #include "../GameObject/Player/Bullet.h"
 #include "../GameObject/Player/BulletDummy.h"
 #include "../GameObject/Enemy/Slime.h"
+#include "../GameObject/Enemy/Bat.h"
+#include "../GameObject/Enemy/Skeleton.h"
 #include "../Manager/BulletMgr.h"
 #include "../Manager/GameObjMgr.h"
 #include "../Manager/KeyMgr.h"
@@ -39,8 +41,8 @@ Play::Play()
     GameObjMgr::Entry(player);
 
     //---エネミー関連インスタンス--//
-    GameObjMgr::Entry(new Slime(VGet(50, 50, 0)));
-    GameObjMgr::Entry(new Slime(VGet(500, 500, 0)));
+    GameObjMgr::Entry(new Bat(VGet(50, 50, 0)));
+    GameObjMgr::Entry(new Skeleton(VGet(120,50, 0)));
 
 }
 

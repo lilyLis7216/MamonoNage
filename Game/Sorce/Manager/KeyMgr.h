@@ -17,12 +17,18 @@ public:
     static void GetPush_KeyD();
     static int  KeyStatusD();
 
+    static void GetPush_KeyA();
+    static int  KeyStatusA();
+
     static bool tmppushP;
     static bool nowpushP;
     static bool tmppushI;
     static bool nowpushI;
     static bool tmppushD;
     static bool nowpushD;
+    static bool tmppushA;
+    static bool nowpushA;
+
 private:
     KeyMgr();                                   // シングルトン
     ~KeyMgr();                                  // ゲームオブジェクトマネージャデストラクタ

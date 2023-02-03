@@ -214,59 +214,59 @@ void Player::DamageAnimation(float _deltaTime)
 /// 
 /// </summary>
 /// <param name="_deltaTime"></param>
-void Player::EnemyRunAnimation(float _deltaTime)
-{
-    mRunAnimCoolTime -= _deltaTime;
-    if (mRunAnimCoolTime <= 0.0f)
-    {
-        mEnemyRunAnimation++;
-        if (mEnemyRunAnimation >= EnemyRunAllNum)
-        {
-            mEnemyRunAnimation = 0;
-        }
-        mRunAnimCoolTime = 0.2f;
-        mEnemyRunAnimation %= EnemyRunAllNum;
-    }
-}
-
-void Player::EnemyDamageAnimation(float _deltaTime)
-{
-    if (KeyMgr::KeyStatusD())
-    {
-        mDamageAnimationFlag = TRUE;
-    }
-    else
-    {
-        mDamageAnimationFlag = FALSE;
-    }
-
-    mDamageAnimCoolTime -= _deltaTime;
-    if (mDamageAnimCoolTime <= 0.0f)
-    {
-        mEnemyDamageAnimation++;
-        if (mEnemyDamageAnimation >= EnemyDamageAllNum)
-        {
-            mEnemyDamageAnimation = 0;
-        }
-        mDamageAnimCoolTime = 1.0f;
-        mEnemyDamageAnimation %= EnemyDamageAllNum;
-    }
-}
-
-void Player::EnemyAttackAnimation(float _deltaTime)
-{
-    mIdleAnimCoolTime -= _deltaTime;
-    if (mIdleAnimCoolTime <= 0.0f)
-    {
-        mEnemyAttackAnimation++;
-        if (mEnemyAttackAnimation >= EnemyAttackAllNum)
-        {
-            mEnemyAttackAnimation = 0;
-        }
-        mIdleAnimCoolTime = 0.2f;
-        mEnemyAttackAnimation %= EnemyAttackAllNum;
-    }
-}
+//void Player::EnemyRunAnimation(float _deltaTime)
+//{
+//    mRunAnimCoolTime -= _deltaTime;
+//    if (mRunAnimCoolTime <= 0.0f)
+//    {
+//        mEnemyRunAnimation++;
+//        if (mEnemyRunAnimation >= EnemyRunAllNum)
+//        {
+//            mEnemyRunAnimation = 0;
+//        }
+//        mRunAnimCoolTime = 0.2f;
+//        mEnemyRunAnimation %= EnemyRunAllNum;
+//    }
+//}
+//
+//void Player::EnemyDamageAnimation(float _deltaTime)
+//{
+//    if (KeyMgr::KeyStatusD())
+//    {
+//        mDamageAnimationFlag = TRUE;
+//    }
+//    else
+//    {
+//        mDamageAnimationFlag = FALSE;
+//    }
+//
+//    mDamageAnimCoolTime -= _deltaTime;
+//    if (mDamageAnimCoolTime <= 0.0f)
+//    {
+//        mEnemyDamageAnimation++;
+//        if (mEnemyDamageAnimation >= EnemyDamageAllNum)
+//        {
+//            mEnemyDamageAnimation = 0;
+//        }
+//        mDamageAnimCoolTime = 1.0f;
+//        mEnemyDamageAnimation %= EnemyDamageAllNum;
+//    }
+//}
+//
+//void Player::EnemyAttackAnimation(float _deltaTime)
+//{
+//    mIdleAnimCoolTime -= _deltaTime;
+//    if (mIdleAnimCoolTime <= 0.0f)
+//    {
+//        mEnemyAttackAnimation++;
+//        if (mEnemyAttackAnimation >= EnemyAttackAllNum)
+//        {
+//            mEnemyAttackAnimation = 0;
+//        }
+//        mIdleAnimCoolTime = 0.2f;
+//        mEnemyAttackAnimation %= EnemyAttackAllNum;
+//    }
+//}
 
 void Player::AnimationUpdate(float _deltaTime)
 {

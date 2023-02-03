@@ -144,6 +144,7 @@
     <ClCompile Include="GameObject\Enemy\Bat.cpp" />
     <ClCompile Include="GameObject\Enemy\Golem.cpp" />
     <ClCompile Include="GameObject\Enemy\Monster.cpp" />
+    <ClCompile Include="GameObject\Enemy\Skeleton.cpp" />
     <ClCompile Include="GameObject\Enemy\Slime.cpp" />
     <ClCompile Include="GameObject\GameObj.cpp" />
     <ClCompile Include="GameObject\Player\Bullet.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="GameObject\Enemy\Bat.h" />
     <ClInclude Include="GameObject\Enemy\Golem.h" />
     <ClInclude Include="GameObject\Enemy\Monster.h" />
+    <ClInclude Include="GameObject\Enemy\Skeleton.h" />
     <ClInclude Include="GameObject\Enemy\Slime.h" />
     <ClInclude Include="GameObject\GameObj.h" />
     <ClInclude Include="GameObject\ObjTag.h" />
