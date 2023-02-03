@@ -44,21 +44,21 @@ const int DamageYNum = 1;
 /// <summary>
 /// enemyAnimation
 /// </summary>
-//エネミーのアニメーション確認用
-const int EnemyXSize = 64;
-const int EnemyYSize = 64;
-
-const int EnemyRunAllNum = 4;
-const int EnemyRunXNum = 4;
-const int EnemyRunYNum = 1;
-
-const int EnemyAttackAllNum = 4;
-const int EnemyAttackXNum = 4;
-const int EnemyAttackYNum = 1;
-
-const int EnemyDamageAllNum = 2;
-const int EnemyDamageXNum = 2;
-const int EnemyDamageYNum = 1;
+////エネミーのアニメーション確認用
+//const int EnemyXSize = 64;
+//const int EnemyYSize = 64;
+//
+//const int EnemyRunAllNum = 4;
+//const int EnemyRunXNum = 4;
+//const int EnemyRunYNum = 1;
+//
+//const int EnemyAttackAllNum = 4;
+//const int EnemyAttackXNum = 4;
+//const int EnemyAttackYNum = 1;
+//
+//const int EnemyDamageAllNum = 2;
+//const int EnemyDamageXNum = 2;
+//const int EnemyDamageYNum = 1;
 
 
 class Player : public GameObj
@@ -152,15 +152,15 @@ private:
     float mDamageAnimCoolTime=1.0f;
     bool mDamageAnimationFlag=FALSE;
 
-    //エネミー確認用
-    int mEnemyRun[EnemyRunAllNum]={-1};
-    int mEnemyRunAnimation=0;
+    ////エネミー確認用
+    //int mEnemyRun[EnemyRunAllNum]={-1};
+    //int mEnemyRunAnimation=0;
 
-    //エネミーアタック
-    int mEnemyAttack[EnemyAttackAllNum] = { -1 };
-    int mEnemyAttackAnimation = 0;
+    ////エネミーアタック
+    //int mEnemyAttack[EnemyAttackAllNum] = { -1 };
+    //int mEnemyAttackAnimation = 0;
 
-    //エネミーダメージ
-    int mEnemyDamage[EnemyDamageAllNum] = { -1 };
-    int mEnemyDamageAnimation = 0;
+    ////エネミーダメージ
+    //int mEnemyDamage[EnemyDamageAllNum] = { -1 };
+    //int mEnemyDamageAnimation = 0;
 };

@@ -31,9 +31,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Scene\Play.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
@@ -103,6 +100,10 @@
     <ClCompile Include="Collision\MapCollision.cpp">
       <Filter>ソース ファイル\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject\Enemy\Skeleton.cpp">
+      <Filter>ソース ファイル\GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Play.h">
@@ -176,6 +177,9 @@
     </ClInclude>
     <ClInclude Include="Collision\MapCollision.h">
       <Filter>ソース ファイル\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Enemy\Skeleton.h">
+      <Filter>ソース ファイル\GameObject\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

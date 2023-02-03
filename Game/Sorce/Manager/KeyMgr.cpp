@@ -8,6 +8,8 @@ bool KeyMgr::nowpushP = FALSE;
 bool KeyMgr::tmppushP = FALSE;
 bool KeyMgr::nowpushD = FALSE;
 bool KeyMgr::tmppushD = FALSE;
+bool KeyMgr::nowpushA = FALSE;
+bool KeyMgr::tmppushA = FALSE;
 
 KeyMgr::KeyMgr()
 {
@@ -158,5 +160,49 @@ void KeyMgr::GetPush_KeyD()
         nowpushD = FALSE;
     }
 }
+void KeyMgr::GetPush_KeyA()
+{
+    if (CheckHitKey(KEY_INPUT_A))
+    {
+        nowpushA = TRUE;
+    }
+    else
+    {
+        nowpushA = FALSE;
+    }
+}
+
+int KeyMgr::KeyStatusA()
+{
+    GetPush_KeyA();
+
+    int ret = 0;
+
+    //ボタンが押された瞬間
+    if (tmppushA == FALSE && nowpushA == TRUE)
+    {
+        ret = 1;
+    }
+
+    //ボタンが長押しされている状態
+    else if (tmppushA == TRUE && nowpushA == TRUE)
+    {
+        ret = 2;
+    }
+
+    //ボタンを離した瞬間
+    else if (tmppushA == TRUE && nowpushA == FALSE)
+    {
+        ret = 3;
+    }
+    //ボタンが押されていない
+
+    else {
+        ret = 0;
+    }
+    tmppushA = nowpushA;
+    return ret;
+}
+
 
 
