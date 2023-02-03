@@ -112,6 +112,7 @@ public:
     void AnimationControl();
 
     void MapColEnter()override;
+
 private:
     float playerVy;
     bool onGround;
@@ -133,6 +134,7 @@ private:
     float mRunAnimCoolTime;
 
     //ジャンプアニメ―ション関連
+    int key[256] = { 0 };
     int mJump[JumpAllNum];
     int mJumpAnimation;
     float mJumpAnimCoolTime;

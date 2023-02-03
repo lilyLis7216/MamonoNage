@@ -81,20 +81,26 @@ void Player::Move(float _deltaTime)
         pos.x -= RunSpeed * _deltaTime;
     }
 
+    GetHitKeyStateAllEx(key);
     if (onGround)
     {
-        if (CheckHitKey(KEY_INPUT_J))
+        if (key[KEY_INPUT_J] == 1)
         {
             jumpFlag = true;
-            if (jumpFlag)
-            {
-                playerVy = -jumpPower;
-                jumpFlag = false;
-            }
         }
-        else
+        else if (key[KEY_INPUT_J] > 1)
         {
-            playerVy = 0;
+            jumpFlag = false;
+
+        }
+        else if (key[KEY_INPUT_K] == -1)
+        {
+            jumpFlag = true;
+        }
+        if (jumpFlag)
+        {
+            playerVy = -jumpPower;
+            jumpFlag = false;
         }
     }
     else if (!jumpFlag)
@@ -105,12 +111,13 @@ void Player::Move(float _deltaTime)
             playerVy = maxFallSpeed;
         }
     }
+
     pos.y += playerVy;
 }
 
 void Player::MapColEnter()
 {
-    VECTOR ret = CalcPushBack(collision, MapCollision::GetMapCol());
+    VECTOR ret = CalcPushBack(collision, MapCollision::GetMapCol(),playerVy);
     pos = VAdd(pos, ret);
     onGround = collision->OnGround();
     ColUpdate();
