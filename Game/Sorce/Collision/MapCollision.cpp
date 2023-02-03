@@ -17,7 +17,7 @@ MapCollision::MapCollision()
     FILE* fp;
 
     //fopen_s関数でcsvファイルを読み取り形式で開く
-    fopen_s(&fp, "../asset/mapArufa/Maoumap_collision.csv", "r");
+    fopen_s(&fp, "../asset/mapArufa/MaouMapCollision.csv", "r");
 
     //fpが空の時は
     if (fp == NULL)

@@ -46,7 +46,7 @@ protected:
     mapLayer map[CELL_NUM_X][CELL_NUM_Y] = { 0 };
 
     // 
-    int chipGraphicHandle[(200 / 40) * (40 / 40)];
+    int chipGraphicHandle[(200 / 40) * (80 / 40)];
 
     // 
     int characterPack;

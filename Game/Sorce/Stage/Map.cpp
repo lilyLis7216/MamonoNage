@@ -6,11 +6,11 @@
 /// </summary>
 Map::Map()
 {
-    LoadDivGraph("../asset/mapArufa/mapsozai.png", (200 / 40) * (40 / 40), 200 / 40, 40, 40, 40, chipGraphicHandle);
+    LoadDivGraph("../asset/mapArufa/Block.png", (200 / 40) * (80 / 40), 200 / 40, 80/40, 40, 40, chipGraphicHandle);
     FILE* fp;
 
     // fopen_sŠÖ”‚Åmap.csv‚ğ“Ç‚İæ‚èŒ`®‚ÅŠJ‚­
-    fopen_s(&fp, "../asset/mapArufa/Maoumap_map.csv", "r");
+    fopen_s(&fp, "../asset/mapArufa/MaouMapBlock.csv", "r");
 
     // fp‚ª‹ó‚Ìê‡‚Í
     if (fp == NULL)
