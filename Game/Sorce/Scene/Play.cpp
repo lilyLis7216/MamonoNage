@@ -41,8 +41,8 @@ Play::Play()
     GameObjMgr::Entry(player);
 
     //---エネミー関連インスタンス--//
-    GameObjMgr::Entry(new Bat(VGet(50, 50, 0)));
-    GameObjMgr::Entry(new Skeleton(VGet(120,50, 0)));
+    GameObjMgr::Entry(new Bat(VGet(50, 100, 0)));
+    GameObjMgr::Entry(new Skeleton(VGet(120,100, 0)));
 
 }
 
