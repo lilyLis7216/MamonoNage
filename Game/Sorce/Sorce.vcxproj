@@ -160,6 +160,7 @@
     <ClCompile Include="Scene\Result.cpp" />
     <ClCompile Include="Scene\SceneBase.cpp" />
     <ClCompile Include="Scene\Title.cpp" />
+    <ClCompile Include="ShakeMgr.cpp" />
     <ClCompile Include="Stage\Background.cpp" />
     <ClCompile Include="Stage\Map.cpp" />
     <ClCompile Include="Stage\Scroll.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Scene\Result.h" />
     <ClInclude Include="Scene\SceneBase.h" />
     <ClInclude Include="Scene\Title.h" />
+    <ClInclude Include="ShakeMgr.h" />
     <ClInclude Include="Stage\Background.h" />
     <ClInclude Include="Stage\Map.h" />
     <ClInclude Include="Stage\Scroll.h" />

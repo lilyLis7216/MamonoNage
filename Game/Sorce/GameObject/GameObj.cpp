@@ -6,6 +6,7 @@ GameObj::GameObj(ObjTag setTag)
     , alive(true)
     , rightDir(true)
     , handle(-1)
+    ,ShakeFlag(FALSE)
 {
 }
 
@@ -15,6 +16,7 @@ GameObj::GameObj(ObjTag setTag,VECTOR pos)
     , alive(true)
     , rightDir(true)
     , handle(-1)
+    , ShakeFlag(FALSE)
 {
 }
 

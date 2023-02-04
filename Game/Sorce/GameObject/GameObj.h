@@ -3,6 +3,7 @@
 #include "ObjTag.h"
 #include "DxLib.h"
 #include"../Collision/Collision.h"
+#include"../ShakeMgr.h"
 
 /// <summary>
 /// ゲームオブジェクトクラス
@@ -67,6 +68,9 @@ protected:
 
     // 描画用ハンドル
     int handle;
+
+    //ダメージシェイクフラグ
+    bool ShakeFlag;
 
     class Collision* collision = nullptr;
 };

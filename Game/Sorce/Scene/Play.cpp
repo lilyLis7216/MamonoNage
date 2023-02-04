@@ -42,8 +42,21 @@ Play::Play()
 
     //---エネミー関連インスタンス--//
     GameObjMgr::Entry(new Bat(VGet(50, 100, 0)));
-    GameObjMgr::Entry(new Skeleton(VGet(120,100, 0)));
+    GameObjMgr::Entry(new Skeleton(VGet(120,105, 0)));
 
+    GameObjMgr::Entry(new Bat(VGet(1960, 700, 0)));
+    GameObjMgr::Entry(new Bat(VGet(2600, 700, 0)));
+    GameObjMgr::Entry(new Bat(VGet(2600, 1400, 0)));
+    GameObjMgr::Entry(new Bat(VGet(4600, 1250, 0)));
+    GameObjMgr::Entry(new Bat(VGet(4900, 1150, 0)));
+
+
+    GameObjMgr::Entry(new Skeleton(VGet(2300, 2000, 0)));
+    GameObjMgr::Entry(new Skeleton(VGet(2450, 2000, 0)));
+    GameObjMgr::Entry(new Skeleton(VGet(2600, 2000, 0)));
+    GameObjMgr::Entry(new Skeleton(VGet(3920, 1450, 0)));
+    GameObjMgr::Entry(new Skeleton(VGet(5800, 450, 0)));
+    GameObjMgr::Entry(new Skeleton(VGet(6300, 450, 0)));
 }
 
 /// <summary>

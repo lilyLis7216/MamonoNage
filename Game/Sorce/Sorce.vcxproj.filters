@@ -29,6 +29,9 @@
     <Filter Include="ソース ファイル\Stage">
       <UniqueIdentifier>{43b5acf3-e9a8-4b8a-ae56-378c07b14a04}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Shake">
+      <UniqueIdentifier>{da582fd5-ede1-45a3-bc1a-d43a87ccf6b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene\Play.cpp">
@@ -104,6 +107,9 @@
       <Filter>ソース ファイル\GameObject\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ShakeMgr.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Play.h">
@@ -180,6 +186,9 @@
     </ClInclude>
     <ClInclude Include="GameObject\Enemy\Skeleton.h">
       <Filter>ソース ファイル\GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ShakeMgr.h">
+      <Filter>ソース ファイル\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

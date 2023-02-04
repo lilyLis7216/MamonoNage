@@ -41,5 +41,10 @@ void Bat::Update(float _deltaTime)
 /// </summary>
 void Bat::Draw(int offSetX, int offSetY)
 {
-    DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1, 0, handle, TRUE, rightDir);
+    if (ShakeFlag)
+    {
+        DrawRotaGraph((int)pos.x - offSetX + ShakeMgr::GetShakePosX(), (int)pos.y - offSetY + ShakeMgr::GetShakePosY(), 1, 0, handle, TRUE, rightDir);
+    }
+    else
+        DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1, 0, handle, TRUE, rightDir);
 }

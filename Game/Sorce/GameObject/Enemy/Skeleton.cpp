@@ -12,7 +12,7 @@ Skeleton::Skeleton(VECTOR pos)
     speed = 200.0f;
     LoadDivGraph("../asset/enemy/skeleton/_move.png", EnemyMoveAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mMove);
     LoadDivGraph("../asset/enemy/skeleton/_attack.png", EnemyMoveAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mAttack);
-    LoadDivGraph("../asset/enemy/skeleton/_damage.png", EnemyMoveAllNum, EnemyDamageXNum, EnemyYNum, EnemyXSize, EnemyYSize, mDamage);
+    LoadDivGraph("../asset/enemy/skeleton/_damage.png", EnemyDamageAllNum, EnemyDamageXNum, EnemyYNum, EnemyXSize, EnemyYSize, mDamage);
 }
 
 Skeleton::~Skeleton()
@@ -31,5 +31,10 @@ void Skeleton::Update(float _deltaTime)
 
 void Skeleton::Draw(int offSetX, int offSetY)
 {
+    if (ShakeFlag)
+    {
+        DrawRotaGraph((int)pos.x - offSetX+ShakeMgr::GetShakePosX(), (int)pos.y - offSetY+ShakeMgr::GetShakePosY(), 1, 0, handle, TRUE, rightDir);
+    }
+    else
     DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1, 0, handle, TRUE, rightDir);
 }
