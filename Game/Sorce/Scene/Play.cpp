@@ -44,19 +44,19 @@ Play::Play()
     GameObjMgr::Entry(new Bat(VGet(50, 100, 0)));
     GameObjMgr::Entry(new Skeleton(VGet(120,105, 0)));
 
-    GameObjMgr::Entry(new Bat(VGet(1960, 700, 0)));
-    GameObjMgr::Entry(new Bat(VGet(2600, 700, 0)));
-    GameObjMgr::Entry(new Bat(VGet(2600, 1400, 0)));
-    GameObjMgr::Entry(new Bat(VGet(4600, 1250, 0)));
-    GameObjMgr::Entry(new Bat(VGet(4900, 1150, 0)));
+    GameObjMgr::Entry(new Bat(VGet(1960, 700, 0)));//コウモリ1の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(2600, 700, 0)));//コウモリ2の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(2600, 1400, 0)));//コウモリ3の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(4600, 1250, 0)));//コウモリ4の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(4900, 1150, 0)));//コウモリ5の初期位置座標
 
 
-    GameObjMgr::Entry(new Skeleton(VGet(2300, 2000, 0)));
-    GameObjMgr::Entry(new Skeleton(VGet(2450, 2000, 0)));
-    GameObjMgr::Entry(new Skeleton(VGet(2600, 2000, 0)));
-    GameObjMgr::Entry(new Skeleton(VGet(3920, 1450, 0)));
-    GameObjMgr::Entry(new Skeleton(VGet(5800, 450, 0)));
-    GameObjMgr::Entry(new Skeleton(VGet(6300, 450, 0)));
+    GameObjMgr::Entry(new Skeleton(VGet(2300, 2000, 0)));//スケルトン1の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(2450, 2000, 0)));//スケルトン2の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(2600, 2000, 0)));//スケルトン3の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(3920, 1450, 0)));//スケルトン4の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(5800, 450, 0)));//スケルトン5の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(6300, 450, 0)));//スケルトン6の初期位置座標
 }
 
 /// <summary>
@@ -110,7 +110,7 @@ void Play::Draw()
     unsigned int Color;
 
     Color = GetColor(255, 255, 255);
-    DrawFormatString(0, 0, Color, "残弾 i の値は %d です", bulletMgr->GetBulletNum());
+    DrawFormatString(0, 0, Color, "残弾 i の値は %d です", bulletMgr->GetBulletNum(BulletMgr::current_type));
 }
 
 //void Play::isStand()
@@ -125,12 +125,15 @@ void Play::Draw()
 //}
 
 void Play::ShotFlow(float _deltaTime)
-{
+{   
+    BulletMgr::AddGoastBulletNum(_deltaTime);
+
+    //Iボタンで弾を切り替える
     if (KeyMgr::KeyStatusI() == 3) {
-        bulletMgr->AddBulletNum();
+        BulletMgr::SwitchType(BulletMgr::current_type);
     }
 
-    if (bulletMgr->GetBulletNum() > 0)
+    if (bulletMgr->GetBulletNum(BulletMgr::current_type) > 0)
     {
         int tmp = KeyMgr::KeyStatusP();
         if (tmp == 1) {
@@ -149,7 +152,7 @@ void Play::ShotFlow(float _deltaTime)
             GameObjMgr::Entry(bullet);
             bullet->SetBulletDir(dummy->GetBulletDummyDir());
             bullet->BulletAngleSet(dummy->GetRadian());
-            bulletMgr->SubBulletNum();
+            bulletMgr->SubBulletNum(BulletMgr::current_type);
             player->SetThrowAnimationFlag(TRUE);
             dummy->SetAlive(false);
         }

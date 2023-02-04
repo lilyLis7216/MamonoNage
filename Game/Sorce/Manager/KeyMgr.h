@@ -20,6 +20,7 @@ public:
     static void GetPush_KeyA();
     static int  KeyStatusA();
 
+    static int mastarkey[256];
     static bool tmppushP;
     static bool nowpushP;
     static bool tmppushI;

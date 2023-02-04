@@ -86,11 +86,3 @@ void Bullet::MapColEnter()
     onGround = collision->OnGround();
     ColUpdate();
 }
-
-void Bullet::BulletNumberAdd(int ButtonStatus)
-{
-    if (ButtonStatus == 3)
-    {
-        mBulletNumber++;
-    }
-}
