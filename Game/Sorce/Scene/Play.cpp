@@ -137,7 +137,7 @@ void Play::ShotFlow(float _deltaTime)
             bullet->SetBulletDir(dummy->GetBulletDummyDir());
             bullet->BulletAngleSet(dummy->GetRadian());
             bulletMgr->SubBulletNum();
-            player->SetThrowAnimationFlag(TRUE);
+            //player->SetThrowAnimationFlag(TRUE);
             dummy->SetAlive(false);
         }
         else
