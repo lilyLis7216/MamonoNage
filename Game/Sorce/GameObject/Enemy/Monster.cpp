@@ -38,10 +38,12 @@ void Monster::DamageAnimation(float _deltaTime)
     if (KeyMgr::KeyStatusD())
     {
         mDamageAnimationFlag = TRUE;
+        ShakeFlag = TRUE;
     }
     else
     {
         mDamageAnimationFlag = FALSE;
+        ShakeFlag = FALSE;
     }
 
     mDamageAnimCoolTime -= _deltaTime;

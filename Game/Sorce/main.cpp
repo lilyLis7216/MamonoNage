@@ -3,6 +3,7 @@
 #include "DxLib.h"
 #include "Scene/SceneBase.h"
 #include "Manager/KeyMgr.h"
+#include "ShakeMgr.h"
 #include "Scene/Title.h"
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
@@ -20,7 +21,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
     //キーボードマネージャーのイニシャライズ
     KeyMgr::Initialize();
-
+    ShakeMgr::CreateInstance();
     //PlayerObjectManager::Initialize();
     // デルタタイム管理用の変数をセット
     LONGLONG nowTime;
