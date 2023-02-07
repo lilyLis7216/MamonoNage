@@ -151,22 +151,14 @@ VECTOR CalcPushBack(Collision* colObj, MapCollision* mapCol,int vy)
             {
                 if (abs(bx) < abs(by))
                 {
-                    if (mapCol->HitBlockType(jx - 1, iy, 0) ||
-                        mapCol->HitBlockType(jx + 1, iy, 0))
-                    {
-                        pushBack.x = (float)bx;
-                    }
+                    pushBack.x = (float)bx;
                 }
                 else
                 {
-                    if (mapCol->HitBlockType(jx, iy - 1, 0) ||
-                        mapCol->HitBlockType(jx, iy + 1, 0))
+                    pushBack.y = (float)by;
+                    if (by <= 0)
                     {
-                        pushBack.y = (float)by;
-                        if (by <= 0)
-                        {
-                            colObj->SetOnGround(true);
-                        }
+                        colObj->SetOnGround(true);
                     }
                 }
             }
@@ -174,10 +166,10 @@ VECTOR CalcPushBack(Collision* colObj, MapCollision* mapCol,int vy)
             {
                 if (abs(bx) > abs(by))
                 {
-                        if (vy>0&&by <= 0)
+                        if (vy>=0&&by <= 0)
                         {
-                            pushBack.y = (float)by;
                             colObj->SetOnGround(true);
+                            pushBack.y = (float)by;
                         }
                         else
                         {

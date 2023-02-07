@@ -16,7 +16,7 @@
 
 
 /// <summary>
-/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 /// </summary>
 Play::Play()
     : SceneBase()
@@ -25,42 +25,42 @@ Play::Play()
 {
     GameObjMgr::CreateInstance();
 
-    //---ƒXƒe[ƒWŠÖ˜AƒCƒ“ƒXƒ^ƒ“ƒX---//
+    //---ã‚¹ãƒ†ãƒ¼ã‚¸é–¢é€£ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹---//
     bg = new Background();
     map = new Map();
     scroll = new Scroll();
     //block = new SkeltonBlock;
 
-    //---“–‚½‚è”»’èŠÖ˜AƒCƒ“ƒXƒ^ƒ“ƒX---//
+    //---å½“ãŸã‚Šåˆ¤å®šé–¢é€£ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹---//
     MapCollision::CreateInstance();
     
-    //---ƒvƒŒƒCƒ„[ŠÖ˜AƒCƒ“ƒXƒ^ƒ“ƒX---//
+    //---ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é–¢é€£ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹---//
     player = new Player();
     bulletMgr = new BulletMgr();
     player->Init();
     GameObjMgr::Entry(player);
 
-    //---ƒGƒlƒ~[ŠÖ˜AƒCƒ“ƒXƒ^ƒ“ƒX--//
+    //---ã‚¨ãƒãƒŸãƒ¼é–¢é€£ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹--//
     GameObjMgr::Entry(new Bat(VGet(50, 100, 0)));
     GameObjMgr::Entry(new Skeleton(VGet(120,105, 0)));
 
-    GameObjMgr::Entry(new Bat(VGet(1960, 700, 0)));//ƒRƒEƒ‚ƒŠ1‚Ì‰ŠúˆÊ’uÀ•W
-    GameObjMgr::Entry(new Bat(VGet(2600, 700, 0)));//ƒRƒEƒ‚ƒŠ2‚Ì‰ŠúˆÊ’uÀ•W
-    GameObjMgr::Entry(new Bat(VGet(2600, 1400, 0)));//ƒRƒEƒ‚ƒŠ3‚Ì‰ŠúˆÊ’uÀ•W
-    GameObjMgr::Entry(new Bat(VGet(4600, 1250, 0)));//ƒRƒEƒ‚ƒŠ4‚Ì‰ŠúˆÊ’uÀ•W
-    GameObjMgr::Entry(new Bat(VGet(4900, 1150, 0)));//ƒRƒEƒ‚ƒŠ5‚Ì‰ŠúˆÊ’uÀ•W
+    GameObjMgr::Entry(new Bat(VGet(1960, 700, 0)));//ã‚³ã‚¦ãƒ¢ãƒª1ã®åˆæœŸä½ç½®åº§æ¨™
+    GameObjMgr::Entry(new Bat(VGet(2600, 700, 0)));//ã‚³ã‚¦ãƒ¢ãƒª2ã®åˆæœŸä½ç½®åº§æ¨™
+    GameObjMgr::Entry(new Bat(VGet(2600, 1400, 0)));//ã‚³ã‚¦ãƒ¢ãƒª3ã®åˆæœŸä½ç½®åº§æ¨™
+    GameObjMgr::Entry(new Bat(VGet(4600, 1250, 0)));//ã‚³ã‚¦ãƒ¢ãƒª4ã®åˆæœŸä½ç½®åº§æ¨™
+    GameObjMgr::Entry(new Bat(VGet(4900, 1150, 0)));//ã‚³ã‚¦ãƒ¢ãƒª5ã®åˆæœŸä½ç½®åº§æ¨™
 
 
-    GameObjMgr::Entry(new Skeleton(VGet(2300, 2000, 0)));//ƒXƒPƒ‹ƒgƒ“1‚Ì‰ŠúˆÊ’uÀ•W
-    GameObjMgr::Entry(new Skeleton(VGet(2450, 2000, 0)));//ƒXƒPƒ‹ƒgƒ“2‚Ì‰ŠúˆÊ’uÀ•W
-    GameObjMgr::Entry(new Skeleton(VGet(2600, 2000, 0)));//ƒXƒPƒ‹ƒgƒ“3‚Ì‰ŠúˆÊ’uÀ•W
-    GameObjMgr::Entry(new Skeleton(VGet(3920, 1450, 0)));//ƒXƒPƒ‹ƒgƒ“4‚Ì‰ŠúˆÊ’uÀ•W
-    GameObjMgr::Entry(new Skeleton(VGet(5800, 450, 0)));//ƒXƒPƒ‹ƒgƒ“5‚Ì‰ŠúˆÊ’uÀ•W
-    GameObjMgr::Entry(new Skeleton(VGet(6300, 450, 0)));//ƒXƒPƒ‹ƒgƒ“6‚Ì‰ŠúˆÊ’uÀ•W
+    GameObjMgr::Entry(new Skeleton(VGet(2300, 2000, 0)));//ã‚¹ã‚±ãƒ«ãƒˆãƒ³1ã®åˆæœŸä½ç½®åº§æ¨™
+    GameObjMgr::Entry(new Skeleton(VGet(2450, 2000, 0)));//ã‚¹ã‚±ãƒ«ãƒˆãƒ³2ã®åˆæœŸä½ç½®åº§æ¨™
+    GameObjMgr::Entry(new Skeleton(VGet(2600, 2000, 0)));//ã‚¹ã‚±ãƒ«ãƒˆãƒ³3ã®åˆæœŸä½ç½®åº§æ¨™
+    GameObjMgr::Entry(new Skeleton(VGet(3920, 1450, 0)));//ã‚¹ã‚±ãƒ«ãƒˆãƒ³4ã®åˆæœŸä½ç½®åº§æ¨™
+    GameObjMgr::Entry(new Skeleton(VGet(5800, 450, 0)));//ã‚¹ã‚±ãƒ«ãƒˆãƒ³5ã®åˆæœŸä½ç½®åº§æ¨™
+    GameObjMgr::Entry(new Skeleton(VGet(6300, 450, 0)));//ã‚¹ã‚±ãƒ«ãƒˆãƒ³6ã®åˆæœŸä½ç½®åº§æ¨™
 }
 
 /// <summary>
-/// ƒfƒXƒgƒ‰ƒNƒ^
+/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 /// </summary>
 Play::~Play()
 {
@@ -72,10 +72,10 @@ Play::~Play()
 }
 
 /// <summary>
-/// ƒvƒŒƒCƒV[ƒ“‚ÌXVˆ—
+/// ãƒ—ãƒ¬ã‚¤ã‚·ãƒ¼ãƒ³ã®æ›´æ–°å‡¦ç†
 /// </summary>
-/// <param name="_deltaTime">1ƒtƒŒ[ƒ€‚ÌŒo‰ßŠÔ</param>
-/// <returns>Œ»İ‚ÌƒV[ƒ“‚Ìƒ|ƒCƒ“ƒ^</returns>
+/// <param name="_deltaTime">1ãƒ•ãƒ¬ãƒ¼ãƒ ã®çµŒéæ™‚é–“</param>
+/// <returns>ç¾åœ¨ã®ã‚·ãƒ¼ãƒ³ã®ãƒã‚¤ãƒ³ã‚¿</returns>
 SceneBase* Play::Update(float _deltaTime)
 {
     //isStand();
@@ -84,21 +84,21 @@ SceneBase* Play::Update(float _deltaTime)
     GameObjMgr::Update(_deltaTime);
     scroll->Update(_deltaTime, player->GetPosition());
 
-    // ƒV[ƒ“‘JˆÚğŒ(ƒXƒy[ƒXƒL[‚ğ‰Ÿ‚·‚Æ‘JˆÚi‰¼j)
+    // ã‚·ãƒ¼ãƒ³é·ç§»æ¡ä»¶(ã‚¹ãƒšãƒ¼ã‚¹ã‚­ãƒ¼ã‚’æŠ¼ã™ã¨é·ç§»ï¼ˆä»®ï¼‰)
     if (CheckHitKey(KEY_INPUT_SPACE))
     {
         MapCollision::DeleteInstance();
         GameObjMgr::DeleteInstance();
-        // ğŒ‚ğ–‚½‚µ‚Ä‚¢‚½‚çƒŠƒUƒ‹ƒgƒV[ƒ“‚ğ¶¬‚µ‚Ä‚»‚Ìƒ|ƒCƒ“ƒ^‚ğ•Ô‚·
+        // æ¡ä»¶ã‚’æº€ãŸã—ã¦ã„ãŸã‚‰ãƒªã‚¶ãƒ«ãƒˆã‚·ãƒ¼ãƒ³ã‚’ç”Ÿæˆã—ã¦ãã®ãƒã‚¤ãƒ³ã‚¿ã‚’è¿”ã™
         return new Result();
     }
 
-    // ƒV[ƒ“‘JˆÚğŒ‚ğ–‚½‚µ‚Ä‚¢‚È‚©‚Á‚½‚ç¡‚Ìƒ|ƒCƒ“ƒ^‚ğ•Ô‚·
+    // ã‚·ãƒ¼ãƒ³é·ç§»æ¡ä»¶ã‚’æº€ãŸã—ã¦ã„ãªã‹ã£ãŸã‚‰ä»Šã®ãƒã‚¤ãƒ³ã‚¿ã‚’è¿”ã™
     return this;
 }
 
 /// <summary>
-/// ƒvƒŒƒCƒV[ƒ“‚Ì•`‰æˆ—
+/// ãƒ—ãƒ¬ã‚¤ã‚·ãƒ¼ãƒ³ã®æç”»å‡¦ç†
 /// </summary>
 void Play::Draw()
 {
@@ -110,7 +110,7 @@ void Play::Draw()
     unsigned int Color;
 
     Color = GetColor(255, 255, 255);
-    DrawFormatString(0, 0, Color, "c’e i ‚Ì’l‚Í %d ‚Å‚·", bulletMgr->GetBulletNum(BulletMgr::current_type));
+    DrawFormatString(0, 0, Color, "æ®‹å¼¾ i ã®å€¤ã¯ %d ã§ã™", bulletMgr->GetBulletNum(BulletMgr::current_type));
 }
 
 //void Play::isStand()
@@ -128,7 +128,7 @@ void Play::ShotFlow(float _deltaTime)
 {   
     BulletMgr::AddGoastBulletNum(_deltaTime);
 
-    //Iƒ{ƒ^ƒ“‚Å’e‚ğØ‚è‘Ö‚¦‚é
+    //Iãƒœã‚¿ãƒ³ã§å¼¾ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
     if (KeyMgr::KeyStatusI() == 3) {
         BulletMgr::SwitchType(BulletMgr::current_type);
     }
@@ -152,8 +152,10 @@ void Play::ShotFlow(float _deltaTime)
             GameObjMgr::Entry(bullet);
             bullet->SetBulletDir(dummy->GetBulletDummyDir());
             bullet->BulletAngleSet(dummy->GetRadian());
-            bulletMgr->SubBulletNum(BulletMgr::current_type);
-            player->SetThrowAnimationFlag(TRUE);
+            
+            bulletMgr->SubBulletNum();
+            //player->SetThrowAnimationFlag(TRUE);
+
             dummy->SetAlive(false);
         }
         else
