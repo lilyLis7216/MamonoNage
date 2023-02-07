@@ -110,7 +110,7 @@ void Play::Draw()
     unsigned int Color;
 
     Color = GetColor(255, 255, 255);
-    DrawFormatString(0, 0, Color, "残弾 i の値は %d です", bulletMgr->GetBulletNum(BulletMgr::current_type));
+    DrawFormatString(0, 0, Color,"%d", bulletMgr->GetBulletNum(BulletMgr::current_type));
 }
 
 //void Play::isStand()
@@ -153,7 +153,7 @@ void Play::ShotFlow(float _deltaTime)
             bullet->SetBulletDir(dummy->GetBulletDummyDir());
             bullet->BulletAngleSet(dummy->GetRadian());
             
-            bulletMgr->SubBulletNum();
+            bulletMgr->SubBulletNum(BulletMgr::current_type);
             //player->SetThrowAnimationFlag(TRUE);
 
             dummy->SetAlive(false);
