@@ -10,7 +10,7 @@ bool KeyMgr::nowpushD = FALSE;
 bool KeyMgr::tmppushD = FALSE;
 bool KeyMgr::nowpushA = FALSE;
 bool KeyMgr::tmppushA = FALSE;
-
+int KeyMgr::mastarkey[256] = { 0 };
 KeyMgr::KeyMgr()
 {
     mpInstance = nullptr;
@@ -30,6 +30,7 @@ void KeyMgr::Initialize()
 
 void KeyMgr::GetPush_KeyP()
 {
+    //
     if (CheckHitKey(KEY_INPUT_P))
     {
         nowpushP = TRUE;
