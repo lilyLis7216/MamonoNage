@@ -16,7 +16,7 @@ Player::Player()
     , mIdleAnimCoolTime(1.0f)
     , mRun{}
     , mRunAnimation(0)
-    , mRunAnimCoolTime(0.2f)
+    , mRunAnimCoolTime(0.0f)
     , mJump{}
     , mJumpAnimation(0)
     , mJumpAnimCoolTime(0.2f)
@@ -24,6 +24,9 @@ Player::Player()
     , mThrowAnimation(0)
     , mThrowAnimCoolTime(0.2f)
     , mThrowAnimationFlag(false)
+    , mPrepa{}
+    , mPrepaAnimation(0)
+    , mPrepaAnimCoolTime(1.0f)
 {
     collision = new Collision(pos, VGet(XSize, YSize, 0), 0.0f);
 }
@@ -54,18 +57,9 @@ void Player::Init()
     LoadDivGraph("../asset/player/_idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle, TRUE);
     LoadDivGraph("../asset/player/_run.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun, TRUE);
     LoadDivGraph("../asset/player/_jump.png", JumpAllNum, JumpXNum, JumpYNum, XSize, YSize, mJump, TRUE);
+    LoadDivGraph("../asset/player/_prepa.png", PrepaAllNum, PrepaXNum, PrepaYNum, XSize, YSize, mPrepa, TRUE);
     LoadDivGraph("../asset/player/_throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow, TRUE);
     LoadDivGraph("../asset/player/_damage.png", 2, 2, 1, XSize, YSize, mDamage, TRUE);
-
-    //// コウモリ画像の読み込み
-    /*LoadDivGraph("../asset/enemy/bat/_move.png", RunAllNum, RunXNum, RunYNum, EnemyXSize, EnemyYSize, mEnemyRun, TRUE);
-    LoadDivGraph("../asset/enemy/bat/_attack.png", 4, 4, 1, EnemyXSize, EnemyYSize, mEnemyAttack, TRUE);
-    LoadDivGraph("../asset/enemy/bat/_damage.png", 2, 2, 1, EnemyXSize, EnemyYSize, mEnemyDamage, TRUE);*/
-
-    ////スケルトン画像の読み込み
-    //LoadDivGraph("../asset/enemy/skeleton/skeleton_move.png", RunAllNum, RunXNum, RunYNum, EnemyXSize, EnemyYSize, mEnemyRun, TRUE);
-    //LoadDivGraph("../asset/enemy/skeleton/skeleton_attack.png", 4, 4, 1, EnemyXSize, EnemyYSize, mEnemyAttack, TRUE);
-    //LoadDivGraph("../asset/enemy/skeleton/skeleton_damage.png", 2, 2, 1, EnemyXSize, EnemyYSize, mEnemyDamage, TRUE);
 }
 
 void Player::Move(float _deltaTime)
@@ -131,6 +125,21 @@ void Player::IdleAnimation(float _deltaTime)
     }
 }
 
+void Player::ThrowPrepaAnimation(float _deltaTime)
+{
+    mPrepaAnimCoolTime -= _deltaTime;
+    if (mPrepaAnimCoolTime <= 0.0f)
+    {
+        mPrepaAnimation++;
+        if (mPrepaAnimation >= PrepaAllNum)
+        {
+            mPrepaAnimation = 0;
+        }
+        mPrepaAnimCoolTime = 0.6f;
+        mPrepaAnimation %= PrepaAllNum;
+    }
+}
+
 void Player::RunAnimation(float _deltaTime)
 {
     mRunAnimCoolTime -= _deltaTime;
@@ -152,7 +161,7 @@ void Player::ThrowAnimation(float _deltaTime)
     if (mThrowAnimCoolTime <= 0.0f)
     {
         mThrowAnimation++;
-        mThrowAnimCoolTime = 0.3f;
+        mThrowAnimCoolTime = 0.2f;
         mThrowAnimation %= ThrowAllNum;
 
         if (mThrowAnimation == ThrowAllNum - 1)
@@ -170,14 +179,14 @@ void Player::JumpAnimation(float _deltaTime)
     if (!onGround)
     {
         mJumpAnimCoolTime -= _deltaTime;
-        if (mJumpAnimCoolTime <= 0.0f)
+        if (mJumpAnimCoolTime <= 0.3f)
         {
             mJumpAnimation++;
             if (mJumpAnimation >= JumpAllNum)
             {
                 mJumpAnimation = 0;
             }
-            mJumpAnimCoolTime = 0.2f;
+            mJumpAnimCoolTime = 0.5f;
             mJumpAnimation %= JumpAllNum;
         }
     }
@@ -215,9 +224,10 @@ void Player::AnimationUpdate(float _deltaTime)
 {
     IdleAnimation(_deltaTime);
     RunAnimation(_deltaTime);
-    ThrowAnimation(_deltaTime);
     JumpAnimation(_deltaTime);
     DamageAnimation(_deltaTime);
+    ThrowPrepaAnimation(_deltaTime);
+    if (mThrowAnimationFlag) {ThrowAnimation(_deltaTime);}
     AnimationControl();
 }
 
@@ -227,6 +237,10 @@ void Player::AnimationControl()
     {
         handle = mDamage[mDamageAnimation];
 
+    }
+    else if (mPrepaAnimationFlag)
+    {
+        handle = mPrepa[mPrepaAnimation];
     }
     else if (mThrowAnimationFlag)
     {
