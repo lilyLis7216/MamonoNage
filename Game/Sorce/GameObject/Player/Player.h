@@ -32,9 +32,13 @@ const int RunYNum = 1;
 const int JumpAllNum = 3;
 const int JumpXNum = 3;
 const int JumpYNum = 1;
+//投げ準備アニメーション
+const int PrepaAllNum = 2;
+const int PrepaXNum = 2;
+const int PrepaYNum = 1;
 //投げるアニメーション
-const int ThrowAllNum = 6;
-const int ThrowXNum = 6;
+const int ThrowAllNum = 3;
+const int ThrowXNum = 3;
 const int ThrowYNum = 1;
 //被ダメージアニメーション
 const int DamageAllNum = 2;
@@ -70,6 +74,9 @@ public:
     // 走りアニメーション設定
     void RunAnimation(float _deltaTime);
 
+    // 投げ準備アニメーション設定
+    void ThrowPrepaAnimation(float _deltaTime);
+    void SetThrowPrepaAnimationFlag(bool Status) { mPrepaAnimationFlag = Status; }
     // 投げアニメーション設定
     void ThrowAnimation(float _deltaTime);
     void SetThrowAnimationFlag(bool Status) { mThrowAnimationFlag = Status; }
@@ -79,12 +86,6 @@ public:
 
     //被ダメージアニメーション設定
     void DamageAnimation(float _deltaTime);
-
-    // エネミーアニメーション確認用
-    void EnemyRunAnimation(float _deltaTime);
-    void EnemyDamageAnimation(float _deltaTime);
-    void EnemyAttackAnimation(float _deltaTime);
-
 
     // アニメーション制御
     void AnimationUpdate(float _deltaTime);
@@ -118,6 +119,12 @@ private:
     int mJumpAnimation;
     float mJumpAnimCoolTime;
     bool jumpFlag;
+
+    //投げ準備アニメーション関連
+    int mPrepa[PrepaAllNum];
+    int mPrepaAnimation;
+    float mPrepaAnimCoolTime;
+    bool mPrepaAnimationFlag=FALSE;
 
     //投げアニメーション関連
     int mThrow[ThrowAllNum];

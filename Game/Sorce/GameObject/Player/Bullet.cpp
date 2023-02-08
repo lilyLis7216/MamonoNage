@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "../../Manager/BulletMgr.h"
 #include "Player.h"
 #include <math.h>
 #include"../../Collision/Collision.h"

@@ -144,6 +144,7 @@ void Play::ShotFlow(float _deltaTime)
         else if (tmp == 2) {
             dummy->AddRadian(_deltaTime);
             dummy->SetPos(player->GetPos());
+            player->SetThrowPrepaAnimationFlag(TRUE);
         }
 
         else if (tmp == 3)
@@ -154,8 +155,8 @@ void Play::ShotFlow(float _deltaTime)
             bullet->BulletAngleSet(dummy->GetRadian());
             
             bulletMgr->SubBulletNum(BulletMgr::current_type);
-            //player->SetThrowAnimationFlag(TRUE);
-
+            player->SetThrowPrepaAnimationFlag(FALSE);
+            player->SetThrowAnimationFlag(TRUE);
             dummy->SetAlive(false);
         }
         else

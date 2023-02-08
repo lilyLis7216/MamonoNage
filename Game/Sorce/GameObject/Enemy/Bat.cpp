@@ -13,9 +13,9 @@ Bat::Bat(VECTOR pos)
 {
     pos = VGet(0, 0, 0);
     speed = 200.0f;
-    LoadDivGraph("../asset/enemy/bat/_move.png", EnemyMoveAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mMove);
-    LoadDivGraph("../asset/enemy/bat/_attack.png", EnemyAttackAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mAttack);
-    LoadDivGraph("../asset/enemy/bat/_damage.png", EnemyDamageAllNum, EnemyDamageXNum, EnemyYNum, EnemyXSize, EnemyYSize, mDamage);
+    LoadDivGraph("../asset/enemy/bat/Bat_move.png", EnemyMoveAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mMove);
+    LoadDivGraph("../asset/enemy/bat/Bat_attack.png", EnemyAttackAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mAttack);
+    LoadDivGraph("../asset/enemy/bat/Bat_damage.png", EnemyDamageAllNum, EnemyDamageXNum, EnemyYNum, EnemyXSize, EnemyYSize, mDamage);
 }
 /// <summary>
 /// デストラクタ
