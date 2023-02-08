@@ -20,6 +20,7 @@ public:
     /// </summary>
     ~Bat();
 
+
     /// <summary>
     /// コウモリの更新処理
     /// </summary>

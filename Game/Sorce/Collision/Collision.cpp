@@ -23,6 +23,15 @@ Collision::~Collision()
 {
 }
 
+bool Collision::CircleToCircle(VECTOR& objPos,float objPosR,const VECTOR& objPos2,float objPos2R)
+{
+    float dx = objPos2.x - objPos.x;
+    float dy = objPos2.y - objPos.y;
+    float dist = sqrt(dx * dx + dy * dy);
+    return dist < objPosR + objPos2R;
+}
+
+
 VECTOR CalcPushBack(Collision* colObj, MapCollision* mapCol)
 {
     VECTOR pushBack = { 0,0,0 };

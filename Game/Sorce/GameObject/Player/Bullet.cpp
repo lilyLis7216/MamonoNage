@@ -80,10 +80,27 @@ void Bullet::Draw(int offSetX, int offSetY)
     mRotation++;
 }
 
+void Bullet::OnCollisionEnter(GameObj* other)
+{
+    ObjTag tag = other->GetTag();
+
+    //ŽG‹›“G‚Æ‚ÌÕ“Ë
+    if (tag == ObjTag::Enemy)
+    {
+        //ƒvƒŒƒCƒ„[‚Ì’e‚Æ“G‚Ì“–‚½‚è”»’è
+        if (collision->CircleToCircle(pos,32,other->GetPos(),32))
+        {
+            alive = FALSE;
+        }
+    }
+}
+
 void Bullet::MapColEnter()
 {
     VECTOR ret = CalcPushBack(collision, MapCollision::GetMapCol());
     pos = VAdd(pos, ret);
+    
     onGround = collision->OnGround();
+    if (onGround) { mRotation = 0; }
     ColUpdate();
 }

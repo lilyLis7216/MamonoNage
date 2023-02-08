@@ -50,6 +50,9 @@ public:
     //アニメーションコントロール
     void AnimationControl();
 
+    //当たり判定
+    void OnCollisionEnter(GameObj* other);
+
 protected:
     // 速度
     float speed;
