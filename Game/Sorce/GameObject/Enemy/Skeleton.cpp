@@ -10,9 +10,9 @@ Skeleton::Skeleton(VECTOR pos)
 {
     pos = VGet(0, 0, 0);
     speed = 200.0f;
-    LoadDivGraph("../asset/enemy/skeleton/_move.png", EnemyMoveAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mMove);
-    LoadDivGraph("../asset/enemy/skeleton/_attack.png", EnemyMoveAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mAttack);
-    LoadDivGraph("../asset/enemy/skeleton/_damage.png", EnemyDamageAllNum, EnemyDamageXNum, EnemyYNum, EnemyXSize, EnemyYSize, mDamage);
+    LoadDivGraph("../asset/enemy/skeleton/skeleton_move.png", EnemyMoveAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mMove);
+    LoadDivGraph("../asset/enemy/skeleton/skeleton_attack.png", EnemyMoveAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mAttack);
+    LoadDivGraph("../asset/enemy/skeleton/skeleton_damage.png", EnemyDamageAllNum, EnemyDamageXNum, EnemyYNum, EnemyXSize, EnemyYSize, mDamage);
 }
 
 Skeleton::~Skeleton()
