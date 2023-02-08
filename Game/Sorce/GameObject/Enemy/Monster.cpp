@@ -54,7 +54,7 @@ void Monster::DamageAnimation(float _deltaTime)
         {
             mDamageAnimation = 0;
         }
-        mDamageAnimCoolTime = 1.0f;
+        mDamageAnimCoolTime =0.3f;
         mDamageAnimation %= EnemyDamageAllNum;
     }
 }
