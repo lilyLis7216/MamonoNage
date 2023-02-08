@@ -28,6 +28,9 @@ public:
 
     void SetOnGround(bool onground) { onGround= onground; }
     bool OnGround() { return onGround; }
+  
+
+    bool CircleToCircle(VECTOR& objPos, float objPosR, const VECTOR& objPos2, float objPos2R);        //
 private:
 
 

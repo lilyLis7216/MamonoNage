@@ -50,7 +50,10 @@ public:
     void SetAlive(bool set) { alive = set; }
     bool GetAlive() const { return alive; }
 
+
+    virtual void  OnCollisionEnter(GameObj* other) {}              // 他のオブジェクトとぶつかったときのリアクション（あれば）
     virtual void  MapColEnter() {}              // マップとぶつかったときのリアクション
+
 protected:
     void ColUpdate();                           // 当たり判定位置の更新
 

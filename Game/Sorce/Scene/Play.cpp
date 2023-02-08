@@ -67,7 +67,7 @@ Play::~Play()
     delete bg;
     delete map;
     delete scroll;
-    delete player;
+    //delete player;
     delete bulletMgr;
 }
 
@@ -82,6 +82,7 @@ SceneBase* Play::Update(float _deltaTime)
     ShotFlow(_deltaTime);
 
     GameObjMgr::Update(_deltaTime);
+    GameObjMgr::ObjCollision();
     scroll->Update(_deltaTime, player->GetPosition());
 
     // シーン遷移条件(スペースキーを押すと遷移（仮）)

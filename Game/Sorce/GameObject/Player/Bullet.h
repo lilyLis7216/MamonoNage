@@ -20,7 +20,7 @@ public:
     void SetonGround(bool isStand) { onGround = isStand; }      //’…’n‚µ‚Ä‚¢‚é‚©
     bool GetonGround() { return onGround; }                     //’…’n‚µ‚Ä‚¢‚é‚©‚ğ‚Á‚Ä‚­‚é
 
-    void BulletNumberAdd(int ButtonStatus);                                     //’e”’Ç‰Á
+    void OnCollisionEnter(GameObj* other);
 
     VECTOR& GetPosition() { return pos; }                              //’e‚ÌˆÊ’u‚ğ‚Á‚Ä‚­‚é
 

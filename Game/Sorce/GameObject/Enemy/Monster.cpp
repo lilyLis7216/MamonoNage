@@ -98,3 +98,18 @@ void Monster::AnimationControl()
     }
 }
 
+void Monster::OnCollisionEnter(GameObj* other)
+{
+    ObjTag tag = other->GetTag();
+
+    //’e‚Æ‚ÌÕ“Ë
+    if (tag == ObjTag::Bullet)
+    {
+        //ƒvƒŒƒCƒ„[‚Ì’e‚Æ“G‚Ì“–‚½‚è”»’è
+        if (collision->CircleToCircle(pos, 32, other->GetPos(), 32))
+        {
+            alive = FALSE;
+        }
+    }
+}
+
