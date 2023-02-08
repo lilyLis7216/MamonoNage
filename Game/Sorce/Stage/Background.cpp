@@ -9,13 +9,13 @@ Background::Background()
     , drawY(0)
 {
     // 背面レイヤー読み込み
-    back = LoadGraph("../asset/background/R2_distantView.png");
+    back = LoadGraph("../asset/background/R2_distant_view_2.png");
 
     // 中央レイヤー読み込み
     mid = LoadGraph("../asset/background/R2_middleView.png");
 
     // 前面レイヤー読み込み
-    front = LoadGraph("../asset/background/R2_foreGround.png");
+    front = LoadGraph("../asset/background/R2_foreground_2.png");
 }
 
 /// <summary>
@@ -37,7 +37,7 @@ void Background::Draw(int scrX, int scrY)
 {
     //----スクロール座標反映----//
     drawX = (int)pos.x - scrX;
-    drawY = (int)pos.y - scrY;
+    drawY = (int)pos.y; //- scrY;
 
     //----背面レイヤー----//
     DrawGraph(drawX % ScreenW, drawY, back, TRUE);
