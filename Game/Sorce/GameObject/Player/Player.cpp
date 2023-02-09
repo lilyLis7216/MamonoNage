@@ -102,6 +102,21 @@ void Player::Move(float _deltaTime)
     pos.y += playerVy;
 }
 
+void Player::OnCollisionEnter(GameObj* other)
+{
+    ObjTag tag = other->GetTag();
+
+    //ŽG‹›“G‚Æ‚ÌÕ“Ë
+    if (tag == ObjTag::Enemy)
+    {
+        //ƒvƒŒƒCƒ„[‚ÆŽG‹›“G‚Ì“–‚½‚è”»’è
+        if (collision->RectToCircle(pos,YSize,XSize, other->GetPos(), 32))
+        {
+            //alive = FALSE;
+        }
+    }
+}
+
 void Player::MapColEnter()
 {
     VECTOR ret = CalcPushBack(collision, MapCollision::GetMapCol());

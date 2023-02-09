@@ -9,10 +9,11 @@ Bat::Bat()
 }
 
 Bat::Bat(VECTOR pos)
-    : Monster(pos)
+    :Monster(pos)
 {
     pos = VGet(0, 0, 0);
     speed = 200.0f;
+    hp = 25;
     LoadDivGraph("../asset/enemy/bat/Bat_move.png", EnemyMoveAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mMove);
     LoadDivGraph("../asset/enemy/bat/Bat_attack.png", EnemyAttackAllNum, EnemyXNum, EnemyYNum, EnemyXSize, EnemyYSize, mAttack);
     LoadDivGraph("../asset/enemy/bat/Bat_damage.png", EnemyDamageAllNum, EnemyDamageXNum, EnemyYNum, EnemyXSize, EnemyYSize, mDamage);
@@ -21,6 +22,7 @@ Bat::Bat(VECTOR pos)
 /// デストラクタ
 /// </summary>
 Bat::~Bat()
+   
 {
 }
 

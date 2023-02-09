@@ -2,7 +2,7 @@
 #include "../GameObject/Player/Player.h"
 #include"../GameObject/GameObj.h"
 #include"MapCollision.h"
-
+#include "DxLib.h"
 Collision::Collision()
     : colPos()
     , colScale()
@@ -22,6 +22,31 @@ Collision::Collision(const VECTOR& objPos, const VECTOR& objScale, const float o
 Collision::~Collision()
 {
 }
+
+bool Collision::RectToCircle(VECTOR& Rect, float RectW, float RectH, const VECTOR& Circle, float CircleR)
+{
+    // 矩形の4つの頂点と円の中心点との距離を計算
+    float rectLeft = Rect.x - RectW / 2;
+    float rectTop = Rect.y - RectH / 2;
+    float rectRight = Rect.x + RectW / 2;
+    float rectBottom = Rect.y + RectH / 2;
+
+    float closestX = (Circle.x < rectLeft) ? rectLeft : (Circle.x > rectRight ? rectRight : Circle.x);
+    float closestY = (Circle.y < rectTop) ? rectTop : (Circle.y > rectBottom ? rectBottom : Circle.y);
+
+    // 矩形の最近接点と円の中心点の距離を計算
+    float distance = sqrt((Circle.x - closestX) * (Circle.x - closestX) +
+        (Circle.y - closestY) * (Circle.y - closestY));
+
+    // 距離が半径以下であるかどうかを判定
+    if (distance <= CircleR) {
+        return TRUE; //当たっている
+    }
+    else {
+        return FALSE;// 当たっていない
+    }
+}
+
 
 bool Collision::CircleToCircle(VECTOR& objPos,float objPosR,const VECTOR& objPos2,float objPos2R)
 {

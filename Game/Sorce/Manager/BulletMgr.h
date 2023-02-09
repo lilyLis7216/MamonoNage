@@ -1,5 +1,7 @@
 #pragma once
 #include <array>
+#include"DxLib.h"
+#include"../Collision/MapCollision.h"
 
 const int BulletTypeAllNumber=4;
 /// <summary>
@@ -55,5 +57,14 @@ public:
 
     //íeÇÃêÿÇËë÷Ç¶
     static void SwitchType(BulletType type);
+
+    static int GetHandle() { return handle; }
+
+    static void Draw(VECTOR PlayerPos,bool RightDir, int offSetX, int offSetY);
 private:
+    static int mGoast;
+    static int mSlime;
+    static int mBat;
+    static int mSkeleton;
+    static int handle;
 };

@@ -67,7 +67,7 @@ Play::~Play()
     delete bg;
     delete map;
     delete scroll;
-    //delete player;
+    delete player;
     delete bulletMgr;
 }
 
@@ -108,6 +108,8 @@ void Play::Draw()
     //block->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 
     GameObjMgr::Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+    BulletMgr::Draw(player->GetPos(), player->GetDir(), scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+
     unsigned int Color;
 
     Color = GetColor(255, 255, 255);
