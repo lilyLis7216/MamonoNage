@@ -28,7 +28,7 @@ void Monster::MoveAnimation(float _deltaTime)
         {
             mMoveAnimation = 0;
         }
-        mMoveAnimCoolTime = 0.2f;
+        mMoveAnimCoolTime = 0.1f;
         mMoveAnimation %= EnemyMoveAllNum;
     }
 }

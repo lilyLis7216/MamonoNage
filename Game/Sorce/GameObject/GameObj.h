@@ -50,7 +50,6 @@ public:
     void SetAlive(bool set) { alive = set; }
     bool GetAlive() const { return alive; }
 
-
     virtual void  OnCollisionEnter(GameObj* other) {}              // 他のオブジェクトとぶつかったときのリアクション（あれば）
     virtual void  MapColEnter() {}              // マップとぶつかったときのリアクション
 

@@ -2,7 +2,7 @@
 
 #include "../GameObj.h"
 #include"../../Manager/KeyMgr.h"
-
+#include"../../Manager/BulletMgr.h"
 //ÉTÉCÉY
 const int EnemyXSize = 64;
 const int EnemyYSize = 64;

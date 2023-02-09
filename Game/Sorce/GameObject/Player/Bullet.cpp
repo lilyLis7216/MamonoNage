@@ -15,10 +15,7 @@ Bullet::Bullet(Player* player)
     , bulletPos{}
     , mBulletNumber(0)
 {
-    if (handle = -1) 
-    {
-        handle = LoadGraph("../asset/player/player.png");
-    }
+
     pos.x = player->GetPos().x;
     pos.y = player->GetPos().y + -10;
 
@@ -76,8 +73,9 @@ void Bullet::Update(float deltaTime)
 
 void Bullet::Draw(int offSetX, int offSetY)
 {
-    DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 0.1f, mRotation, handle, alive, rightDir);
-    mRotation++;
+    handle = BulletMgr::GetHandle();
+    DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 2.0f, mRotation, handle, alive, rightDir);
+    mRotation+=0.1;
 }
 
 void Bullet::OnCollisionEnter(GameObj* other)

@@ -145,6 +145,16 @@ void GameObjMgr::ObjCollision()
     //    instance->objects[ObjTag::Player][plynum]->MapColEnter();
     //}
 
+
+     // player vs Enemy 
+    for (int playernum = 0; playernum < instance->objects[ObjTag::Player].size(); ++playernum)
+    {
+        for (int ennum = 0; ennum < instance->objects[ObjTag::Enemy].size(); ++ennum)
+        {
+            instance->objects[ObjTag::Player][playernum]->
+                OnCollisionEnter(instance->objects[ObjTag::Enemy][ennum]);
+        }
+    }
     // playerbullet vs Asteroid(enemy) すべての組み合わせチェック
     for (int bulletnum = 0; bulletnum < instance->objects[ObjTag::Bullet].size(); ++bulletnum)
     {

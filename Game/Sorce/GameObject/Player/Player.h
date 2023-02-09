@@ -92,8 +92,12 @@ public:
 
     //•`‰æ§Œä
     void AnimationControl();
-
+    
+    //“–‚½‚è”»’è
+    void OnCollisionEnter(GameObj* other);
     void MapColEnter()override;
+
+
 private:
     float playerVy;
     bool onGround;
