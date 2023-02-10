@@ -67,7 +67,7 @@ Play::~Play()
     delete bg;
     delete map;
     delete scroll;
-    delete player;
+    //delete player;
     delete bulletMgr;
 }
 
