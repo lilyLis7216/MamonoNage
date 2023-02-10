@@ -1,11 +1,12 @@
 #include "Result.h"
 #include "DxLib.h"
 
+
 Result::Result()
     : SceneBase()
 {
     // リザルトシーン画像の読み込み
-    sceneImage = LoadGraph("../asset/scene/result.png");
+    sceneImage = LoadGraph("../asset/scene/Result.png");
 }
 
 Result::~Result()
@@ -23,7 +24,7 @@ Result::~Result()
 SceneBase* Result::Update(float _deltaTime)
 {
     // リザルトシーンのポインタを返す
-    return nullptr;
+    return this;
 }
 
 /// <summary>
