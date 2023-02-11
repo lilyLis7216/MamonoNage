@@ -17,7 +17,7 @@ Slime::Slime()
 /// コンストラクタ
 /// </summary>
 Slime::Slime(VECTOR pos)
-    : Monster(pos)
+    : Monster(BulletMgr::BulletType::slime,pos)
     , state(IDLE)
     , atkState(NONE)
 {

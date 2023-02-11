@@ -34,7 +34,7 @@ public:
     /// コンストラクタ
     /// </summary>
     /// <param name="pos">初期座標</param>
-    Monster(VECTOR pos);
+    Monster(BulletMgr::BulletType bulletType,VECTOR pos);
 
     /// <summary>
     /// 仮想デストラクタ
@@ -54,6 +54,8 @@ public:
     void OnCollisionEnter(GameObj* other);
 
 protected:
+    BulletMgr::BulletType emyType;
+
     // 速度
     float speed;
 
