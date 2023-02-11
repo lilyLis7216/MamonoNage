@@ -6,7 +6,7 @@ Skeleton::Skeleton()
 }
 
 Skeleton::Skeleton(VECTOR pos)
-    : Monster(pos)
+    : Monster(BulletMgr::BulletType::skeleton,pos)
 {
     pos = VGet(0, 0, 0);
     speed = 200.0f;

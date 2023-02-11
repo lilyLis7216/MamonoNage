@@ -7,8 +7,9 @@ Monster::Monster()
 {
 }
 
-Monster::Monster(VECTOR pos)
+Monster::Monster(BulletMgr::BulletType bulletType, VECTOR pos)
     : GameObj(ObjTag::Enemy,pos)
+    ,emyType(bulletType)
     , speed(0)
     , hp(0)
 {
@@ -108,6 +109,7 @@ void Monster::OnCollisionEnter(GameObj* other)
         //ƒvƒŒƒCƒ„[‚Ì’e‚Æ“G‚Ì“–‚½‚è”»’è
         if (collision->CircleToCircle(pos, 32, other->GetPos(), 32))
         {
+            BulletMgr::AddBulletNum(emyType);
             alive = FALSE;
         }
     }
