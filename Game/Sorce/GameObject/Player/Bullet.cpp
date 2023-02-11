@@ -19,6 +19,8 @@ Bullet::Bullet(Player* player)
     pos.x = player->GetPos().x;
     pos.y = player->GetPos().y + -10;
 
+    handle = BulletMgr::GetHandle();
+
     collision = new Collision(pos, VGet(32, 32, 0), 0.0f);
 }
 
@@ -73,7 +75,6 @@ void Bullet::Update(float deltaTime)
 
 void Bullet::Draw(int offSetX, int offSetY)
 {
-    handle = BulletMgr::GetHandle();
     DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 2.0f, mRotation, handle, alive, rightDir);
     mRotation+=0.1;
 }
