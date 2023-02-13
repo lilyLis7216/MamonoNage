@@ -48,6 +48,10 @@ public:
     /// </summary>
     void ShotFlow(float _deltaTime);
 
+    /// <summary>
+    /// バレットの出現
+    /// </summary>
+    void BulletRepop();
 private:
     Background* bg;
     Map* map;

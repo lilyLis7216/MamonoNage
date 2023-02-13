@@ -9,7 +9,7 @@ int ShakeMgr::SHAKE_DURATION=200;
 int ShakeMgr::SHAKE_INTERVAL=20;
 
 std::mt19937 engine(std::random_device{}());
-std::uniform_int_distribution<int> shake_range(-10, 10);
+std::uniform_int_distribution<int> shake_range(-20, 20);
 
 
 ShakeMgr::ShakeMgr()

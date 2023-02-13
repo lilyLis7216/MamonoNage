@@ -44,7 +44,7 @@ public:
     /// c’e‚Ì‰ÁZ(ƒS[ƒXƒgˆÈŠO)
     /// </summary>
     static void AddBulletNum(BulletType type) { bullets[type]++; }
-    
+    static void AddBulletNum(int mHandle);
     /// <summary>
     /// c’e‚Ì‰ÁZ(ƒS[ƒXƒg)
     /// </summary>
@@ -58,9 +58,17 @@ public:
     //’e‚ÌØ‚è‘Ö‚¦
     static void SwitchType(BulletType type);
 
+    //’e‚ÌØ‚è‘Ö‚¦
+    static void AutoSwitchType(BulletType type);
+
     static int GetHandle() { return handle; }
 
     static void Draw(VECTOR PlayerPos,bool RightDir, int offSetX, int offSetY);
+
+    static int GetGoastHandle() { return mGoast; }
+    static int GetSlimeHandle() { return mSlime; }
+    static int GetBatHandle() { return mBat; }
+    static int GetSkeletonHandle() { return mSkeleton; }
 private:
     static int mGoast;
     static int mSlime;

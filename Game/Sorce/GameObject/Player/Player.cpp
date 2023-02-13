@@ -2,6 +2,7 @@
 #include"../../Collision/Collision.h"
 #include"../../Collision/MapCollision.h"
 #include"../../Manager/KeyMgr.h"
+#include"../../Manager/BulletMgr.h"
 
 Player::Player()
     : GameObj(ObjTag::Player)
@@ -44,7 +45,14 @@ void Player::Update(float _deltaTime)
 
 void Player::Draw(int offSetX, int offSetY)
 {
-    DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1.5, 0, handle, TRUE, rightDir);
+    if (!(handle == mDamage[mDamageAnimation])) 
+    {
+        DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1.5, 0, handle, TRUE, rightDir);
+    }
+    if (handle == mDamage[mDamageAnimation] && mDamageAnimation)
+    {
+        DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1.5, 0, handle, TRUE, rightDir);
+    }
 }
 
 void Player::Init()
@@ -111,6 +119,16 @@ void Player::OnCollisionEnter(GameObj* other)
     {
         //ƒvƒŒƒCƒ„[‚ÆŽG‹›“G‚Ì“–‚½‚è”»’è
         if (collision->RectToCircle(pos,YSize,XSize, other->GetPos(), 32))
+        {
+            //alive = FALSE;
+        }
+    }
+
+    //’e‚Æ‚ÌÕ“Ë
+    if (tag == ObjTag::Bullet)
+    {
+        //ƒvƒŒƒCƒ„[‚Æ’e‚Ì“–‚½‚è”»’è
+        if (collision->RectToCircle(pos, YSize, XSize, other->GetPos(), 32))
         {
             //alive = FALSE;
         }
@@ -230,7 +248,7 @@ void Player::DamageAnimation(float _deltaTime)
         {
             mDamageAnimation = 0;
         }
-        mDamageAnimCoolTime = 1.0f;
+        mDamageAnimCoolTime = 0.1f;
         mDamageAnimation %= DamageAllNum;
     }
 }

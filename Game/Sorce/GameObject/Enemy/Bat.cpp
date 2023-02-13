@@ -1,5 +1,6 @@
 #include "Bat.h"
 #include"../../Manager/KeyMgr.h"
+#include"../../Manager/GameObjMgr.h"
 
 /// <summary>
 /// コンストラクタ
@@ -52,7 +53,4 @@ void Bat::Draw(int offSetX, int offSetY)
     else
         DrawRotaGraph((int)pos.x - offSetX, (int)pos.y - offSetY, 1, 0, handle, TRUE, rightDir);
 
-    unsigned int Cr;
-    Cr = GetColor(0, 0, 255);    // 青色の値を取得
-    DrawCircleAA((int)pos.x - offSetX, (int)pos.y - offSetY, 32, 32, Cr, FALSE);
 }

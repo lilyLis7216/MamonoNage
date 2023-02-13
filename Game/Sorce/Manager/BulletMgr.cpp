@@ -1,7 +1,7 @@
 #include "BulletMgr.h"
 
 //配列の中を初期化
-std::array<int, 4> BulletMgr::bullets = { 1, 2, 3 ,4};
+std::array<int, 4> BulletMgr::bullets = { 1, 0, 0 ,0};
 BulletMgr::BulletType BulletMgr::current_type = BulletMgr::goast;
 float BulletMgr::GoastCoolTime = 2.0f;
 int BulletMgr::handle = 0;
@@ -12,19 +12,32 @@ int BulletMgr::mSkeleton= 0;
 
 BulletMgr::BulletMgr()
 {
-    //LoadDivGraph("../asset/bullet/goast.png", 1, 1, 1, 32, 32, mGoast, TRUE);
-    //LoadDivGraph("../asset/bullet/slime.png", 1, 1, 1, 32, 32, mSlime, TRUE);
-    //LoadDivGraph("../asset/bullet/bat.png", 1, 1, 1, 32, 32, mBat, TRUE);
-    //LoadDivGraph("../asset/bullet/skeleton.png", 1, 1, 1, 32, 32, mSkeleton, TRUE);
 
     mGoast=LoadGraph("../asset/bullet/goast.png");
     mSlime=LoadGraph("../asset/bullet/slime.png");
     mBat=LoadGraph("../asset/bullet/bat.png");
     mSkeleton=LoadGraph("../asset/bullet/skeleton.png");
+
 }
 
 BulletMgr::~BulletMgr()
 {
+}
+
+void BulletMgr::AddBulletNum(int mHandle)
+{
+    if (mHandle == mSlime)
+    {
+        bullets[slime]++;
+    }
+    if (mHandle == mBat)
+    {
+        bullets[bat]++;
+    }
+    if (mHandle == mSkeleton)
+    {
+        bullets[skeleton]++;
+    }
 }
 
 void BulletMgr::AddGoastBulletNum(float _deltaTime)
@@ -39,6 +52,10 @@ void BulletMgr::AddGoastBulletNum(float _deltaTime)
         }
     }
 }
+
+//void BulletMgr::GoastBullet()
+//{
+//}
 
 void BulletMgr::SwitchType(BulletType type)
 {
@@ -90,6 +107,40 @@ void BulletMgr::SwitchType(BulletType type)
     }
 }
 
+
+void BulletMgr::AutoSwitchType(BulletType type)
+{
+    {
+        
+        //弾切り替え開始時スライムだった場合
+        if (type == slime && bullets[slime]==0)
+        {
+            current_type = bat;
+            if (bullets[bat] == 0)
+            {
+                current_type = skeleton;
+                if (bullets[skeleton] == 0)
+                {
+                    current_type = goast;
+                }
+            }
+        }
+        //弾切り替え開始時コウモリだった場合
+        else if (type == bat && bullets[bat] == 0)
+        {
+            current_type = skeleton;
+            if (bullets[skeleton] == 0)
+            {
+                current_type = goast;
+            }
+        }
+        //弾切り替え開始時スケルトンだった場合
+        else if (type == skeleton && bullets[skeleton] == 0)
+        {
+            current_type = goast;
+        }
+    }
+}
 void BulletMgr::Draw(VECTOR PlayerPos, bool RightDir, int offSetX, int offSetY)
 {
    
@@ -107,7 +158,7 @@ void BulletMgr::Draw(VECTOR PlayerPos, bool RightDir, int offSetX, int offSetY)
     }
 
 
-    if (current_type == skeleton)
+   if (current_type == skeleton)
     {
         handle = mSkeleton;
     }
