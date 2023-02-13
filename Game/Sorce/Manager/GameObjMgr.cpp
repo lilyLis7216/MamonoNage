@@ -155,7 +155,28 @@ void GameObjMgr::ObjCollision()
                 OnCollisionEnter(instance->objects[ObjTag::Enemy][ennum]);
         }
     }
-    // playerbullet vs Asteroid(enemy) すべての組み合わせチェック
+
+    // player vs Bullet 
+    for (int playernum = 0; playernum < instance->objects[ObjTag::Player].size(); ++playernum)
+    {
+        for (int bulletnum = 0; bulletnum < instance->objects[ObjTag::Bullet].size(); ++bulletnum)
+        {
+            instance->objects[ObjTag::Player][playernum]->
+                OnCollisionEnter(instance->objects[ObjTag::Bullet][bulletnum]);
+        }
+    }
+
+    //  Bullet vs player 
+    for (int bulletnum = 0; bulletnum < instance->objects[ObjTag::Bullet].size(); ++bulletnum)
+    {
+        for (int playernum = 0; playernum < instance->objects[ObjTag::Player].size(); ++playernum)
+        {
+            instance->objects[ObjTag::Bullet][bulletnum]->
+                OnCollisionEnter(instance->objects[ObjTag::Player][playernum]);
+        }
+    }
+
+    // playerbullet vs enemy 
     for (int bulletnum = 0; bulletnum < instance->objects[ObjTag::Bullet].size(); ++bulletnum)
     {
         for (int ennum = 0; ennum < instance->objects[ObjTag::Enemy].size(); ++ennum)
@@ -164,6 +185,7 @@ void GameObjMgr::ObjCollision()
                 OnCollisionEnter(instance->objects[ObjTag::Enemy][ennum]);
         }
     }
+
     //Enemy vs PlayerBullet
     for (int ennum = 0; ennum < instance->objects[ObjTag::Enemy].size(); ++ennum)
     {

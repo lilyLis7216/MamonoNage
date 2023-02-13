@@ -152,6 +152,7 @@
     <ClCompile Include="GameObject\Player\Player.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager\BulletMgr.cpp" />
+    <ClCompile Include="Manager\EffectMgr.cpp" />
     <ClCompile Include="Manager\GameObjMgr.cpp" />
     <ClCompile Include="Manager\KeyMgr.cpp" />
     <ClCompile Include="Manager\MonsterMgr.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="GameObject\Player\BulletDummy.h" />
     <ClInclude Include="GameObject\Player\Player.h" />
     <ClInclude Include="Manager\BulletMgr.h" />
+    <ClInclude Include="Manager\EffectMgr.h" />
     <ClInclude Include="Manager\GameObjMgr.h" />
     <ClInclude Include="Manager\KeyMgr.h" />
     <ClInclude Include="Manager\MonsterMgr.h" />

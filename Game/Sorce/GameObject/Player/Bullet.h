@@ -6,6 +6,7 @@ class Bullet : public GameObj
 {
 public:
     Bullet(class Player* player);
+    Bullet(class Monster* monster);
     ~Bullet();
 
     void SetBulletPos(VECTOR plyPos) { if (!alive)pos = plyPos; }        ///ƒvƒŒƒCƒ„[‚Ì’†S‚ğ’e‚Ì‰ŠúˆÊ’u‚É‘ã“ü
@@ -25,8 +26,11 @@ public:
     VECTOR& GetPosition() { return pos; }                              //’e‚ÌˆÊ’u‚ğ‚Á‚Ä‚­‚é
 
     void MapColEnter()override;
+
 private:
-    int     mRotation;                       //‰ñ“]Šp
+    
+    int     EmyID;
+    float   mRotation;                       //‰ñ“]Šp
     float   mMovePower;                      //’e‚Ì”­Ë‚Ì—Í
     VECTOR  mBulletPower;                    //’e‚Ì•ûŒü
     double  mBulletVX;                      //’e‚ÌX•ûŒü‚Ì—Í

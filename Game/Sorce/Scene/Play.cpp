@@ -9,6 +9,7 @@
 #include "../GameObject/Enemy/Slime.h"
 #include "../GameObject/Enemy/Bat.h"
 #include "../GameObject/Enemy/Skeleton.h"
+#include "../Manager/EffectMgr.h"
 #include "../Manager/BulletMgr.h"
 #include "../Manager/GameObjMgr.h"
 #include "../Manager/KeyMgr.h"
@@ -40,9 +41,13 @@ Play::Play()
     player->Init();
     GameObjMgr::Entry(player);
 
-    //---エネミー関連インスタンス--//
-    GameObjMgr::Entry(new Bat(VGet(50, 100, 0)));
-    GameObjMgr::Entry(new Skeleton(VGet(120,105, 0)));
+    
+    
+
+
+    ////---エネミー関連インスタンス--//
+    //GameObjMgr::Entry(new Bat(VGet(50, 100, 0)));
+    //GameObjMgr::Entry(new Skeleton(VGet(120,105, 0)));
 
     GameObjMgr::Entry(new Bat(VGet(1960, 700, 0)));//コウモリ1の初期位置座標
     GameObjMgr::Entry(new Bat(VGet(2600, 700, 0)));//コウモリ2の初期位置座標
@@ -130,11 +135,14 @@ void Play::Draw()
 void Play::ShotFlow(float _deltaTime)
 {   
     BulletMgr::AddGoastBulletNum(_deltaTime);
+    BulletMgr::AutoSwitchType(BulletMgr::current_type);
 
     //Iボタンで弾を切り替える
     if (KeyMgr::KeyStatusI() == 3) {
         BulletMgr::SwitchType(BulletMgr::current_type);
     }
+
+
 
     if (bulletMgr->GetBulletNum(BulletMgr::current_type) > 0)
     {
@@ -166,4 +174,9 @@ void Play::ShotFlow(float _deltaTime)
         {
         }
     }
+}
+
+void Play::BulletRepop()
+{
+
 }

@@ -1,8 +1,11 @@
 #pragma once
 
 #include "../GameObj.h"
-#include"../../Manager/KeyMgr.h"
-#include"../../Manager/BulletMgr.h"
+#include "../Player/Bullet.h"
+#include "../../Manager/EffectMgr.h"
+#include "../../Manager/KeyMgr.h"
+#include "../../Manager/BulletMgr.h"
+#include "../../Manager/GameObjMgr.h"
 //サイズ
 const int EnemyXSize = 64;
 const int EnemyYSize = 64;
@@ -49,7 +52,11 @@ public:
     void AttackAnimation(float _deltaTime);
     //アニメーションコントロール
     void AnimationControl();
-
+    
+    //エネミータイプを取る
+    int GetemyType() { return emyType; }
+    //
+    int GetHandle() { return handle; }
     //当たり判定
     void OnCollisionEnter(GameObj* other);
 
@@ -63,7 +70,7 @@ protected:
     int mMove[EnemyMoveAllNum] = { -1 };
     int mMoveAnimation = 0;
     float mMoveAnimCoolTime = 0.2f;
-    bool mDamageAnimationFlag = FALSE;
+    
 
     //攻撃モーション
     int mAttack[EnemyAttackAllNum] = { -1 };
@@ -75,6 +82,8 @@ protected:
     int mDamage[EnemyDamageAllNum] = { -1 };
     int mDamageAnimation = 0;
     float mDamageAnimCoolTime = 0.2f;
+    float mDamageTime = 0.5f;
+    bool mDamageAnimationFlag = FALSE;
 
     // 体力
     int hp;

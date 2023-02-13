@@ -1,6 +1,7 @@
 #include "Bullet.h"
 #include "../../Manager/BulletMgr.h"
 #include "Player.h"
+#include"../Enemy/Monster.h"
 #include <math.h>
 #include"../../Collision/Collision.h"
 #include"../../Collision/MapCollision.h"
@@ -16,11 +17,40 @@ Bullet::Bullet(Player* player)
     , mBulletNumber(0)
 {
 
-    pos.x = player->GetPos().x;
-    pos.y = player->GetPos().y + -10;
+    if (player->GetDir()) {
+        pos.x = player->GetPos().x - 110;
+    }
+    else {
+        pos.x = player->GetPos().x + 110;
+    }
+    pos.y = player->GetPos().y + -50;
 
     handle = BulletMgr::GetHandle();
 
+    collision = new Collision(pos, VGet(32, 32, 0), 0.0f);
+}
+
+Bullet::Bullet(Monster* monster)
+:GameObj(ObjTag::Bullet)
+, mRotation(0)
+, mMovePower(5)
+, mBulletVX(0)
+, mBulletVY(0)
+, mBulletPower{ 0,0 }
+, bulletPos{}
+, mBulletNumber(0)
+{
+    //“–‚½‚Á‚½‘ŠŽè‚É‡‚í‚¹‚Äbullet‚ð¶¬
+    if (monster->GetemyType() == 1) {
+        handle = BulletMgr::GetSlimeHandle();
+    }
+    if(monster->GetemyType() == 2){
+        handle = BulletMgr::GetBatHandle();
+    }
+    if (monster->GetemyType() == 3) {
+        handle = BulletMgr::GetSkeletonHandle();
+    }
+    pos = monster->GetPos();
     collision = new Collision(pos, VGet(32, 32, 0), 0.0f);
 }
 
@@ -89,7 +119,19 @@ void Bullet::OnCollisionEnter(GameObj* other)
         //ƒvƒŒƒCƒ„[‚Ì’e‚Æ“G‚Ì“–‚½‚è”»’è
         if (collision->CircleToCircle(pos,32,other->GetPos(),32))
         {
-            alive = FALSE;
+            //alive = FALSE;
+        }
+    }
+    //ƒvƒŒƒCƒ„[‚Æ’e‚ÌÕ“Ë
+    if (tag == ObjTag::Player)
+    {
+        //ƒvƒŒƒCƒ„[‚Ì’e‚Æ“G‚Ì“–‚½‚è”»’è
+        if (collision->CircleToCircle(pos, 32, other->GetPos(), 100))
+        {
+            if (onGround) {
+                BulletMgr::AddBulletNum(handle);
+                alive = FALSE;
+            }
         }
     }
 }

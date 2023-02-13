@@ -104,6 +104,7 @@ void MapCollision::DeleteInstance()
 
 bool MapCollision::HitBlockType(int num,int num2, int blockType)
 {
+
     if (coll[num][num2].boxHandle == collBoxHandle[blockType])
     {
         return true;

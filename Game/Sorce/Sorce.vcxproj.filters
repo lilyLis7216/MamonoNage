@@ -110,6 +110,9 @@
     <ClCompile Include="ShakeMgr.cpp">
       <Filter>ソース ファイル\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Manager\EffectMgr.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Play.h">
@@ -188,6 +191,9 @@
       <Filter>ソース ファイル\GameObject\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ShakeMgr.h">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\EffectMgr.h">
       <Filter>ソース ファイル\Manager</Filter>
     </ClInclude>
   </ItemGroup>
