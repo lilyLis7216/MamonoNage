@@ -114,7 +114,7 @@ void Play::Draw()
 
     GameObjMgr::Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
     BulletMgr::Draw(player->GetPos(), player->GetDir(), scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
-
+    EffectMgr::ADraw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
     unsigned int Color;
 
     Color = GetColor(255, 255, 255);
@@ -174,9 +174,4 @@ void Play::ShotFlow(float _deltaTime)
         {
         }
     }
-}
-
-void Play::BulletRepop()
-{
-
 }

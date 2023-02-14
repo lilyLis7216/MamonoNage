@@ -6,7 +6,7 @@ class EffectMgr final
 public:
 	static void CreateInstance();
 	static void DeleteInstance();
-	static void ADraw();
+	static void ADraw(int offsetX, int offsetY);
 	/// <summary>
 	/// Aのエフェクト関連
 	/// </summary>
@@ -21,6 +21,7 @@ public:
 	static int AEffect;
 	static int AEffectAnimation[10];
 	static bool AEffectFlag;
+	static void SetAEffectFlag(bool flag);//エフェクトフラグを挙げる
 	static void EffectA(float _deltaTime, int x, int y);
 	
 
