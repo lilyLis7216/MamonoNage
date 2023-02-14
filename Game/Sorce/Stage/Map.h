@@ -7,7 +7,7 @@ const int CELL_WIDTH = 40;
 const int CELL_HEIGHT = 40;
 
 // x方向のタイル数
-const int CELL_NUM_X = 162;
+const int CELL_NUM_X = 158;
 
 // y方向のタイル数
 const int CELL_NUM_Y = 54;

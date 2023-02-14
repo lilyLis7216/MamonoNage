@@ -9,7 +9,7 @@ const int BOX_WIDTH = 40;
 const int BOX_HEIGHT = 40;
 
 //“–‚½‚è”»’è‚Ì‰¡‚Ì”
-const int BOX_NUM_X = 162;
+const int BOX_NUM_X = 150;
 
 //“–‚½‚è”»’è‚Ìc‚Ì”
 const int BOX_NUM_Y = 54;
