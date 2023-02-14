@@ -9,8 +9,8 @@ Scroll::Scroll()
     , dx(0)
     , dy(0)
 {
-    scrMaxX = 40 * 162 - 1920;
-    scrMaxY = 40 * 58 - 1080;
+    scrMaxX = 40 * 147 - 1920;
+    scrMaxY = 40 * 54 - 1080;
     scrMinX = 0;
     scrMinY = 0;
 }

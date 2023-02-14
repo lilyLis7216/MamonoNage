@@ -10,7 +10,7 @@ Map::Map()
     FILE* fp;
 
     // fopen_sŠÖ”‚Åmap.csv‚ğ“Ç‚İæ‚èŒ`®‚ÅŠJ‚­
-    fopen_s(&fp, "../asset/mapArufa/MaouMapBlock.csv", "r");
+    fopen_s(&fp, "../asset/mapArufa/Maoumap_map.csv", "r");
 
     // fp‚ª‹ó‚Ìê‡‚Í
     if (fp == NULL)

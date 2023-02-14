@@ -83,18 +83,23 @@ void Player::Move(float _deltaTime)
         pos.x -= RunSpeed * _deltaTime;
     }
 
+    GetHitKeyStateAllEx(key);
     if (onGround)
     {
-        if (CheckHitKey(KEY_INPUT_J))
+        if (key[KEY_INPUT_J] == 1)
         {
             jumpFlag = true;
-            if (jumpFlag)
-            {
-                playerVy = -jumpPower;
-                jumpFlag = false;
-            }
         }
-        else
+        else if (key[KEY_INPUT_J] > 1 || key[KEY_INPUT_J] == -1)
+        {
+            jumpFlag = false;
+        }
+        if (jumpFlag)
+        {
+            playerVy = -jumpPower;
+            jumpFlag = false;
+        }
+        else if (playerVy > 0)
         {
             playerVy = 0;
         }
@@ -137,7 +142,7 @@ void Player::OnCollisionEnter(GameObj* other)
 
 void Player::MapColEnter()
 {
-    VECTOR ret = CalcPushBack(collision, MapCollision::GetMapCol());
+    VECTOR ret = CalcPushBack(collision, MapCollision::GetMapCol(),playerVy);
     pos = VAdd(pos, ret);
     onGround = collision->OnGround();
     ColUpdate();
