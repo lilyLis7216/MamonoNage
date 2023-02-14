@@ -47,4 +47,4 @@ private:
 /// <summary>
 /// âüÇµñﬂÇµó éZèo
 /// </summary>
-VECTOR CalcPushBack(class Collision* colObj, class MapCollision* mapCol,int vy=0);
+VECTOR CalcPushBack(class Collision* colObj, class MapCollision* mapCol, int vy = 0);
