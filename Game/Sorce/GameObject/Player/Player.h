@@ -103,6 +103,7 @@ private:
     bool onGround;
     int jumpButtonCount;
 
+    int key[256];
     bool input;
 
     // アニメーション
