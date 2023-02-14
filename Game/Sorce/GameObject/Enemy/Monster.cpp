@@ -37,17 +37,6 @@ void Monster::MoveAnimation(float _deltaTime)
 
 void Monster::DamageAnimation(float _deltaTime)
 {
-    //if (KeyMgr::KeyStatusD())
-    //{
-    //    mDamageAnimationFlag = TRUE;
-    //    ShakeFlag = TRUE;
-    //}
-    ///*else
-    //{
-    //    mDamageAnimationFlag = FALSE;
-    //    ShakeFlag = FALSE;
-    //}*/
-
     mDamageAnimCoolTime -= _deltaTime;
     if (mDamageAnimCoolTime <= 0.0f)
     {
@@ -63,7 +52,6 @@ void Monster::DamageAnimation(float _deltaTime)
     if (mDamageAnimationFlag&& rightDir)
     {   
         EffectMgr::EffectA(_deltaTime, pos.x, pos.y);
-        EffectMgr::ADraw();
         pos.x+=5;
         mDamageTime -= _deltaTime;
         if (mDamageTime < 0) 
@@ -73,13 +61,13 @@ void Monster::DamageAnimation(float _deltaTime)
             bullet->SetPos(this->GetPos());
          
             GameObjMgr::Entry(bullet);
+            EffectMgr::SetAEffectFlag(FALSE);
             alive = FALSE;
         }
     }
     else if(mDamageAnimationFlag && !rightDir) 
     {            
         EffectMgr::EffectA(_deltaTime, pos.x, pos.y);
-        EffectMgr::ADraw();
         pos.x-=5;
         mDamageTime -= _deltaTime;
         if (mDamageTime < 0)
@@ -89,6 +77,7 @@ void Monster::DamageAnimation(float _deltaTime)
             bullet->SetPos(this->GetPos());
 
             GameObjMgr::Entry(bullet);
+            EffectMgr::SetAEffectFlag(FALSE);
             alive = FALSE;
         }
     }
@@ -150,14 +139,16 @@ void Monster::OnCollisionEnter(GameObj* other)
         {   
             mDamageAnimationFlag = TRUE;
             ShakeFlag = TRUE;
-
-            if (pos.x-other->GetPos().x > 0) 
+            EffectMgr::SetAEffectFlag(TRUE);
+            if (pos.x-other->GetPos().x > 0&&DirFlag == FALSE)
             {
                 rightDir = TRUE;
+                DirFlag = TRUE;
             }
-            else 
+            else if(pos.x - other->GetPos().x < 0 && DirFlag == FALSE)
             {
                 rightDir = FALSE;
+                DirFlag = TRUE;
             }
             
         }

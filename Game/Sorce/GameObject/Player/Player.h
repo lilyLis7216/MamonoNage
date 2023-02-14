@@ -4,8 +4,8 @@
 #include"../../Manager/GameObjMgr.h"
 
 //プレイヤーの初期位置
-const int FirstPosX = 400;
-const int FirstPosY = 200;
+const int FirstPosX = 1400;
+const int FirstPosY = 1460;
 
 //移動速度
 const float RunSpeed = 250.0f;

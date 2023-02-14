@@ -84,7 +84,7 @@ protected:
     float mDamageAnimCoolTime = 0.2f;
     float mDamageTime = 0.5f;
     bool mDamageAnimationFlag = FALSE;
-
+    bool DirFlag = FALSE;
     // ‘Ì—Í
     int hp;
 
