@@ -48,20 +48,30 @@ Play::Play()
     ////---エネミー関連インスタンス--//
     //GameObjMgr::Entry(new Bat(VGet(50, 100, 0)));
     //GameObjMgr::Entry(new Skeleton(VGet(120,105, 0)));
+    GameObjMgr::Entry(new Bat(VGet(350, 1900, 0)));//スライム1の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(500, 1900, 0)));//スライム2の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(1500, 1460, 0)));//スライム3の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(2700, 1650, 0)));//スライム4の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(3000, 1650, 0)));//スライム5の初期位置座標
 
-    GameObjMgr::Entry(new Bat(VGet(1960, 700, 0)));//コウモリ1の初期位置座標
-    GameObjMgr::Entry(new Bat(VGet(2600, 700, 0)));//コウモリ2の初期位置座標
-    GameObjMgr::Entry(new Bat(VGet(2600, 1400, 0)));//コウモリ3の初期位置座標
-    GameObjMgr::Entry(new Bat(VGet(4600, 1250, 0)));//コウモリ4の初期位置座標
-    GameObjMgr::Entry(new Bat(VGet(4900, 1150, 0)));//コウモリ5の初期位置座標
+
+    GameObjMgr::Entry(new Bat(VGet(2250, 1460, 0)));//コウモリ1の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(4020, 1200, 0)));//コウモリ2の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(4360, 1050, 0)));//コウモリ3の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(4600, 350, 0)));//コウモリ4の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(2350, 800, 0)));//コウモリ5の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(1900, 650, 0)));//コウモリ5の初期位置座標
 
 
-    GameObjMgr::Entry(new Skeleton(VGet(2300, 2000, 0)));//スケルトン1の初期位置座標
-    GameObjMgr::Entry(new Skeleton(VGet(2450, 2000, 0)));//スケルトン2の初期位置座標
-    GameObjMgr::Entry(new Skeleton(VGet(2600, 2000, 0)));//スケルトン3の初期位置座標
-    GameObjMgr::Entry(new Skeleton(VGet(3920, 1450, 0)));//スケルトン4の初期位置座標
-    GameObjMgr::Entry(new Skeleton(VGet(5800, 450, 0)));//スケルトン5の初期位置座標
-    GameObjMgr::Entry(new Skeleton(VGet(6300, 450, 0)));//スケルトン6の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(2050, 1950, 0)));//スケルトン1の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(2200, 1950, 0)));//スケルトン2の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(2350, 1950, 0)));//スケルトン3の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(2850, 1650, 0)));//スケルトン4の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(4100, 560, 0)));//スライム8の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(3300, 560, 0)));//スライム9の初期位置座標
+
+    GameObjMgr::Entry(new Skeleton(VGet(5400, 400, 0)));//スケルトン5の初期位置座標
+    GameObjMgr::Entry(new Skeleton(VGet(5800, 450, 0)));//スケルトン6の初期位置座標
 }
 
 /// <summary>

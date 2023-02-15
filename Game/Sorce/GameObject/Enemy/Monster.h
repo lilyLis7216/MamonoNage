@@ -44,6 +44,10 @@ public:
     /// </summary>
     virtual ~Monster();
 
+    //動き
+    void Move(float _deltaTime);
+    //方向転換
+    void DirReverse(VECTOR ret);
     // 走りアニメーション設定
     void MoveAnimation(float _deltaTime);
     //被ダメージアニメーション設定
@@ -55,16 +59,30 @@ public:
     
     //エネミータイプを取る
     int GetemyType() { return emyType; }
+    
     //
     int GetHandle() { return handle; }
+    
+
+
     //当たり判定
     void OnCollisionEnter(GameObj* other);
+    void MapColEnter()override;
 
 protected:
     BulletMgr::BulletType emyType;
 
+    //座標関連
+    
+    VECTOR tmpPos = VGet(0,0,0);
+
     // 速度
-    float speed;
+    float speed=0.0f;
+
+    //重力関連
+    float mEmyVy;
+    bool onEmyGround;
+    bool onFirstEmyGround=false;
 
     //動きモーション
     int mMove[EnemyMoveAllNum] = { -1 };
@@ -86,6 +104,6 @@ protected:
     bool mDamageAnimationFlag = FALSE;
     bool DirFlag = FALSE;
     // 体力
-    int hp;
+    int hp=0;
 
 };

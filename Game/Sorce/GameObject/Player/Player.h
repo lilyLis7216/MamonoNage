@@ -7,13 +7,16 @@
 const int FirstPosX = 1400;
 const int FirstPosY = 1460;
 
+////プレイヤーの初期位置
+//const int FirstPosX = 5400;
+//const int FirstPosY = 360;
 //移動速度
 const float RunSpeed = 250.0f;
 
 //ジャンプ関連
 const float jumpPower = 12.0f;     // ジャンプ初速度
-const float gravity = 0.3f;    // 重力
-const float maxFallSpeed = 10.0f;   // 最大落下速度
+//const float gravity = 0.3f;    // 重力
+//const float maxFallSpeed = 10.0f;   // 最大落下速度
 
 
 ////プレイヤーのサイズ
@@ -100,7 +103,6 @@ public:
 
 private:
     float playerVy;
-    bool onGround;
     int jumpButtonCount;
 
     int key[256];
