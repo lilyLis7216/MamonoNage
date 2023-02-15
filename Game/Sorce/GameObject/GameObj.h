@@ -5,6 +5,9 @@
 #include"../Collision/Collision.h"
 #include"../ShakeMgr.h"
 
+const float gravity = 0.3f;    // 重力
+const float maxFallSpeed = 10.0f;   // 最大落下速度
+
 /// <summary>
 /// ゲームオブジェクトクラス
 /// </summary>
@@ -73,6 +76,9 @@ protected:
 
     //ダメージシェイクフラグ
     bool ShakeFlag;
+
+    //地面についているか
+    bool onGround=false;
 
     class Collision* collision = nullptr;
 };

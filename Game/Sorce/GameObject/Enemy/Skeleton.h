@@ -2,7 +2,8 @@
 
 #include "Monster.h"
 
-
+//移動スピード
+const float SKELETONSPEED = 100.0f;
 
 /// <summary>
 /// スケルトンクラス（Monster継承）

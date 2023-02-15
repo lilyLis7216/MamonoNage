@@ -10,14 +10,60 @@ Monster::Monster()
 Monster::Monster(BulletMgr::BulletType bulletType, VECTOR pos)
     : GameObj(ObjTag::Enemy,pos)
     , emyType(bulletType)
-    , speed(0)
-    , hp(0)
+  
 {
-
+    collision = new Collision(pos, VGet(EnemyXSize, EnemyYSize, 0), 0.0f);
 }
 
 Monster::~Monster()
 {
+}
+
+void Monster::Move(float _deltaTime)
+{
+    if (rightDir)
+    {
+        pos.x -= speed * _deltaTime;
+    }
+    else if (!rightDir)
+    {
+        pos.x += speed * _deltaTime;
+    }
+
+    mEmyVy += gravity;
+    if (mEmyVy > maxFallSpeed)
+    {
+        mEmyVy = maxFallSpeed;
+    }
+    pos.y += mEmyVy;
+}
+
+void Monster::DirReverse(VECTOR ret)
+{
+    if (ret.x>0)
+    {
+        rightDir = FALSE;
+    }
+    if (ret.x<0)
+    {
+        rightDir = TRUE;
+    }
+
+    if (onFirstEmyGround == TRUE && ret.y==0)
+    {
+        if (rightDir) {
+            rightDir = FALSE;
+            pos.x = tmpPos.x + 5;
+            pos.y = tmpPos.y;
+        }
+        else if (!rightDir) {
+            rightDir = TRUE;
+            pos.x = tmpPos.x - 5;
+            pos.y = tmpPos.y;
+        }
+    }
+    tmpPos = pos;
+    
 }
 
 void Monster::MoveAnimation(float _deltaTime)
@@ -120,11 +166,6 @@ void Monster::AnimationControl()
     {
         handle = mMove[mMoveAnimation];
     }
-//}
-//
-//int Monster::EnemyStateTag(lass)
-//{
-//    return 0;
 }
 
 void Monster::OnCollisionEnter(GameObj* other)
@@ -153,5 +194,15 @@ void Monster::OnCollisionEnter(GameObj* other)
             
         }
     }
+}
+
+void Monster::MapColEnter()
+{
+    VECTOR ret = CalcPushBack(collision, MapCollision::GetMapCol(), mEmyVy);
+    pos = VAdd(pos, ret);
+    DirReverse(ret);
+    onGround = collision->OnGround();
+    if (onGround) { onFirstEmyGround = TRUE; }
+    ColUpdate();
 }
 
