@@ -32,6 +32,12 @@
     <Filter Include="ソース ファイル\Shake">
       <UniqueIdentifier>{da582fd5-ede1-45a3-bc1a-d43a87ccf6b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\UI">
+      <UniqueIdentifier>{e1b171ca-23eb-4f28-81d8-1780c618a887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\Flag">
+      <UniqueIdentifier>{88035554-2a3d-4469-b9fd-aef65dea2f69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene\Play.cpp">
@@ -112,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="Manager\EffectMgr.cpp">
       <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\Flag\Flag.cpp">
+      <Filter>ソース ファイル\GameObject\Flag</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +207,12 @@
     </ClInclude>
     <ClInclude Include="Manager\EffectMgr.h">
       <Filter>ソース ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Flag\Flag.h">
+      <Filter>ソース ファイル\GameObject\Flag</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

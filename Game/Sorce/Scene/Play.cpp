@@ -4,6 +4,7 @@
 #include "../Stage/Scroll.h"
 #include "../Collision/MapCollision.h"
 #include "../GameObject/Player/Player.h"
+#include "../GameObject/Flag/Flag.h"
 #include "../GameObject/Player/Bullet.h"
 #include "../GameObject/Player/BulletDummy.h"
 #include "../GameObject/Enemy/Slime.h"
@@ -29,6 +30,7 @@ Play::Play()
     //---ステージ関連インスタンス---//
     bg = new Background();
     map = new Map();
+    flag = new Flag();
     scroll = new Scroll();
     //block = new SkeltonBlock;
 
@@ -40,6 +42,8 @@ Play::Play()
     bulletMgr = new BulletMgr();
     player->Init();
     GameObjMgr::Entry(player);
+    GameObjMgr::Entry(flag);
+
 
     
     
@@ -50,7 +54,7 @@ Play::Play()
     //GameObjMgr::Entry(new Skeleton(VGet(120,105, 0)));
     GameObjMgr::Entry(new Bat(VGet(350, 1900, 0)));//スライム1の初期位置座標
     GameObjMgr::Entry(new Bat(VGet(500, 1900, 0)));//スライム2の初期位置座標
-    GameObjMgr::Entry(new Bat(VGet(1500, 1460, 0)));//スライム3の初期位置座標
+    GameObjMgr::Entry(new Bat(VGet(1300, 1460, 0)));//スライム3の初期位置座標
     GameObjMgr::Entry(new Bat(VGet(2700, 1650, 0)));//スライム4の初期位置座標
     GameObjMgr::Entry(new Bat(VGet(3000, 1650, 0)));//スライム5の初期位置座標
 
@@ -99,9 +103,10 @@ SceneBase* Play::Update(float _deltaTime)
     GameObjMgr::Update(_deltaTime);
     GameObjMgr::ObjCollision();
     scroll->Update(_deltaTime, player->GetPosition());
+   
 
     // シーン遷移条件(スペースキーを押すと遷移（仮）)
-    if (CheckHitKey(KEY_INPUT_SPACE))
+    if (CheckHitKey(KEY_INPUT_SPACE)||player->GetPlySceneEndFlag())
     {
         MapCollision::DeleteInstance();
         GameObjMgr::DeleteInstance();

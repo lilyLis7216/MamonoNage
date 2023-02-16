@@ -146,6 +146,7 @@
     <ClCompile Include="GameObject\Enemy\Monster.cpp" />
     <ClCompile Include="GameObject\Enemy\Skeleton.cpp" />
     <ClCompile Include="GameObject\Enemy\Slime.cpp" />
+    <ClCompile Include="GameObject\Flag\Flag.cpp" />
     <ClCompile Include="GameObject\GameObj.cpp" />
     <ClCompile Include="GameObject\Player\Bullet.cpp" />
     <ClCompile Include="GameObject\Player\BulletDummy.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="Stage\Map.cpp" />
     <ClCompile Include="Stage\Scroll.cpp" />
     <ClCompile Include="Stage\SkeltonBlock.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -175,6 +177,7 @@
     <ClInclude Include="GameObject\Enemy\Monster.h" />
     <ClInclude Include="GameObject\Enemy\Skeleton.h" />
     <ClInclude Include="GameObject\Enemy\Slime.h" />
+    <ClInclude Include="GameObject\Flag\Flag.h" />
     <ClInclude Include="GameObject\GameObj.h" />
     <ClInclude Include="GameObject\ObjTag.h" />
     <ClInclude Include="GameObject\Player\Bullet.h" />
@@ -195,6 +198,7 @@
     <ClInclude Include="Stage\Map.h" />
     <ClInclude Include="Stage\Scroll.h" />
     <ClInclude Include="Stage\SkeltonBlock.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

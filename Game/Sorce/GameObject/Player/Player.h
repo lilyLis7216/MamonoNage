@@ -3,13 +3,14 @@
 #include "../GameObj.h"
 #include"../../Manager/GameObjMgr.h"
 
-//プレイヤーの初期位置
-const int FirstPosX = 1400;
-const int FirstPosY = 1460;
-
 ////プレイヤーの初期位置
-//const int FirstPosX = 5400;
-//const int FirstPosY = 360;
+//const int FirstPosX = 1000;
+//const int FirstPosY = 1460;
+
+//プレイヤーの初期位置
+const int FirstPosX = 1000;
+const int FirstPosY = 360;
+
 //移動速度
 const float RunSpeed = 250.0f;
 
@@ -100,6 +101,8 @@ public:
     void OnCollisionEnter(GameObj* other);
     void MapColEnter()override;
 
+    //プレイシーンを終わらせる
+    bool GetPlySceneEndFlag()  {return PlySceneEndFlag;}
 
 private:
     float playerVy;
@@ -107,6 +110,8 @@ private:
 
     int key[256];
     bool input;
+
+    bool PlySceneEndFlag=FALSE;
 
     // アニメーション
     int mAnimation;
