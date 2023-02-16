@@ -137,6 +137,16 @@ void Player::OnCollisionEnter(GameObj* other)
             //alive = FALSE;
         }
     }
+
+    //ŽG‹›“G‚Æ‚ÌÕ“Ë
+    if (tag == ObjTag::Flag)
+    {
+        //ƒvƒŒƒCƒ„[‚ÆŽG‹›“G‚Ì“–‚½‚è”»’è
+        if (collision->RectToCircle(pos, YSize, XSize, other->GetPos(), 32))
+        {
+            PlySceneEndFlag = TRUE;
+        }
+    }
 }
 
 void Player::MapColEnter()

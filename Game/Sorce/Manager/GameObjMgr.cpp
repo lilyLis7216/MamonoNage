@@ -166,6 +166,16 @@ void GameObjMgr::ObjCollision()
         }
     }
 
+    // player vs Flag
+    for (int playernum = 0; playernum < instance->objects[ObjTag::Player].size(); ++playernum)
+    {
+        for (int flagnum = 0; flagnum < instance->objects[ObjTag::Flag].size(); ++flagnum)
+        {
+            instance->objects[ObjTag::Player][playernum]->
+                OnCollisionEnter(instance->objects[ObjTag::Flag][flagnum]);
+        }
+    }
+
     //  Bullet vs player 
     for (int bulletnum = 0; bulletnum < instance->objects[ObjTag::Bullet].size(); ++bulletnum)
     {

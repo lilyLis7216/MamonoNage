@@ -4,6 +4,7 @@
 
 class Background;
 class Map;
+class Flag;
 class Scroll;
 class MapCollision;
 //class SkeltonBlock;
@@ -43,6 +44,7 @@ public:
     ///// </summary>
     //void isStand();
 
+
     /// <summary>
     /// キャラがバレットを投げるまでの流れ
     /// </summary>
@@ -51,6 +53,7 @@ public:
 private:
     Background* bg;
     Map* map;
+    Flag* flag;
     Scroll* scroll;
     MapCollision* mapcol=nullptr;
     // SkeltonBlock* block;
