@@ -22,6 +22,7 @@ BulletMgr::BulletMgr()
 
 BulletMgr::~BulletMgr()
 {
+
 }
 
 void BulletMgr::AddBulletNum(int mHandle)
@@ -144,7 +145,6 @@ void BulletMgr::AutoSwitchType(BulletType type)
 void BulletMgr::Draw(VECTOR PlayerPos, bool RightDir, int offSetX, int offSetY)
 {
    
-
     VECTOR ReadyBullet = PlayerPos;
     ReadyBullet.y -= 110;
     
@@ -178,6 +178,6 @@ void BulletMgr::Draw(VECTOR PlayerPos, bool RightDir, int offSetX, int offSetY)
     {
 
     }
-
+    
     DrawExtendGraph((int)ReadyBullet.x - offSetX, (int)ReadyBullet.y - offSetY, (int)ReadyBullet.x - offSetX + 32 * 1.5, (int)ReadyBullet.y - offSetY + 32 * 1.5, handle, TRUE);
 }

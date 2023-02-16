@@ -19,7 +19,7 @@ ShakeMgr::ShakeMgr()
 
 ShakeMgr::~ShakeMgr()
 {
-
+    mpInstance = nullptr;
 }
 
 void ShakeMgr::CreateInstance()

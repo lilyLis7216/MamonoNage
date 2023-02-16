@@ -3,13 +3,13 @@
 #include "../GameObj.h"
 #include"../../Manager/GameObjMgr.h"
 
-////プレイヤーの初期位置
-//const int FirstPosX = 1000;
-//const int FirstPosY = 1460;
-
 //プレイヤーの初期位置
 const int FirstPosX = 1000;
-const int FirstPosY = 360;
+const int FirstPosY = 1460;
+
+//プレイヤーの初期位置
+//const int FirstPosX = 1000;
+//const int FirstPosY = 360;
 
 //移動速度
 const float RunSpeed = 250.0f;
@@ -72,6 +72,7 @@ public:
 
     int GetDir() const { return rightDir; }
 
+    bool GetClearFlag() { return clearFlag; }
     // 待機アニメーション設定
     void IdleAnimation(float _deltaTime);
 
@@ -112,6 +113,7 @@ private:
     bool input;
 
     bool PlySceneEndFlag=FALSE;
+    bool clearFlag=FALSE;
 
     // アニメーション
     int mAnimation;
@@ -149,5 +151,5 @@ private:
     int mDamageAnimation = 0;
     float mDamageAnimCoolTime = 1.0f;
     bool mDamageAnimationFlag = FALSE;
-
+    float mDamageTime = 0.8f;
 };

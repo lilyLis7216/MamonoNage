@@ -85,11 +85,11 @@ void Player::Move(float _deltaTime)
     GetHitKeyStateAllEx(key);
     if (onGround)
     {
-        if (key[KEY_INPUT_J] == 1)
+        if (key[KEY_INPUT_SPACE] == 1)
         {
             jumpFlag = true;
         }
-        else if (key[KEY_INPUT_J] > 1 || key[KEY_INPUT_J] == -1)
+        else if (key[KEY_INPUT_SPACE] > 1 || key[KEY_INPUT_SPACE] == -1)
         {
             jumpFlag = false;
         }
@@ -124,7 +124,7 @@ void Player::OnCollisionEnter(GameObj* other)
         //ƒvƒŒƒCƒ„[‚ÆŽG‹›“G‚Ì“–‚½‚è”»’è
         if (collision->RectToCircle(pos,YSize,XSize, other->GetPos(), 32))
         {
-            //alive = FALSE;
+            mDamageAnimationFlag = TRUE;
         }
     }
 
@@ -138,13 +138,14 @@ void Player::OnCollisionEnter(GameObj* other)
         }
     }
 
-    //ŽG‹›“G‚Æ‚ÌÕ“Ë
+    //ƒS[ƒ‹‚Æ‚ÌÕ“Ë
     if (tag == ObjTag::Flag)
     {
-        //ƒvƒŒƒCƒ„[‚ÆŽG‹›“G‚Ì“–‚½‚è”»’è
+        //ƒvƒŒƒCƒ„[‚ÆƒS[ƒ‹‚Ì“–‚½‚è”»’è
         if (collision->RectToCircle(pos, YSize, XSize, other->GetPos(), 32))
         {
             PlySceneEndFlag = TRUE;
+            clearFlag = TRUE;
         }
     }
 }
@@ -245,14 +246,14 @@ void Player::JumpAnimation(float _deltaTime)
 
 void Player::DamageAnimation(float _deltaTime)
 {
-    if (KeyMgr::KeyStatusD())
+   /* if (KeyMgr::KeyStatusD())
     {
         mDamageAnimationFlag = TRUE;
     }
     else
     {
         mDamageAnimationFlag = FALSE;
-    }
+    }*/
 
     mDamageAnimCoolTime -= _deltaTime;
     if (mDamageAnimCoolTime <= 0.0f)
@@ -264,6 +265,22 @@ void Player::DamageAnimation(float _deltaTime)
         }
         mDamageAnimCoolTime = 0.1f;
         mDamageAnimation %= DamageAllNum;
+    }
+    if (mDamageAnimationFlag)
+    {
+        if (rightDir)
+        {
+            pos.x += 5;
+        }
+        if (!rightDir)
+        {
+            pos.x -= 5;
+        }
+        mDamageTime -= _deltaTime;
+        if (mDamageTime < 0)
+        {
+            PlySceneEndFlag = TRUE;
+        }
     }
 }
 

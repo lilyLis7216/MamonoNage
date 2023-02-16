@@ -5,13 +5,14 @@
 Flag::Flag()
 	:GameObj(ObjTag::Flag)
 {	
-	pos.x = 800;
-	pos.y = 600;
-	handle = LoadGraph("../asset/player/flag.jpg");
+	pos.x = 500;
+	pos.y = 670;
+	handle = LoadGraph("../asset/player/Door.png");
 }
 
 Flag::~Flag()
 {
+	handle = -1;
 }
 
 void Flag::Update(float _deltaTime)
@@ -21,7 +22,7 @@ void Flag::Update(float _deltaTime)
 
 void Flag::Draw(int offSetX, int offSetY)
 {
-	DrawRotaGraph(pos.x-offSetX, pos.y-offSetY, 0.1,0,handle, TRUE);
+	DrawRotaGraph(pos.x-offSetX, pos.y-offSetY, 3,0,handle, TRUE);
 }
 
 void Flag::OnCollisionEnter(GameObj* other)
