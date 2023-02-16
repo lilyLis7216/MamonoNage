@@ -3,7 +3,7 @@
 //”z—ñ‚Ì’†‚ğ‰Šú‰»
 std::array<int, 4> BulletMgr::bullets = { 1, 0, 0 ,0};
 BulletMgr::BulletType BulletMgr::current_type = BulletMgr::goast;
-float BulletMgr::GoastCoolTime = 2.0f;
+float BulletMgr::GoastCoolTime = 3.0f;
 int BulletMgr::handle = 0;
 int BulletMgr::mGoast = 0;
 int BulletMgr::mSlime = 0;
@@ -49,7 +49,7 @@ void BulletMgr::AddGoastBulletNum(float _deltaTime)
         if (GoastCoolTime < 0) 
         {
             bullets[goast]++;
-            GoastCoolTime = 2.0f;
+            GoastCoolTime = 3.0f;
         }
     }
 }

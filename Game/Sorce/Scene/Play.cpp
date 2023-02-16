@@ -93,6 +93,8 @@ Play::~Play()
 /// <returns>現在のシーンのポインタ</returns>
 SceneBase* Play::Update(float _deltaTime)
 {
+    // ゲームパッドの更新
+    GamePad::Update();
     //isStand();
     ShotFlow(_deltaTime);
 
@@ -101,7 +103,7 @@ SceneBase* Play::Update(float _deltaTime)
     scroll->Update(_deltaTime, player->GetPosition());
    
 
-    // シーン遷移条件(スペースキーを押すと遷移（仮）)
+    // シーン遷移条件
     if (player->GetPlySceneEndFlag())
     {
         MapCollision::DeleteInstance();
@@ -152,27 +154,34 @@ void Play::ShotFlow(float _deltaTime)
     BulletMgr::AutoSwitchType(BulletMgr::current_type);
 
     //Iボタンで弾を切り替える
-    if (KeyMgr::KeyStatusC() == 3) {
+    if (KeyMgr::KeyStatusC() == 3|| GamePad::GetButtonState(Button::Y) == -1) {
         BulletMgr::SwitchType(BulletMgr::current_type);
     }
 
-
+    if (GamePad::GetButtonState(Button::A) > 1&&(dummy==NULL))
+    {
+        dummy = new BulletDummy(player);
+        GameObjMgr::Entry(dummy);
+        dummy->AddRadian(_deltaTime);
+        dummy->SetPos(player->GetPos());
+        player->SetThrowPrepaAnimationFlag(TRUE);
+    }
 
     if (bulletMgr->GetBulletNum(BulletMgr::current_type) > 0)
     {
         int tmp = KeyMgr::KeyStatusZ();
-        if (tmp == 1) {
+        if (tmp == 1|| GamePad::GetButtonState(Button::A)==1) {
             dummy = new BulletDummy(player);
             GameObjMgr::Entry(dummy);
+            bulletstandbyFlag = TRUE;
         }
-
-        else if (tmp == 2) {
+        if ((tmp == 2 || GamePad::GetButtonState(Button::A) > 1)&& bulletstandbyFlag) {
             dummy->AddRadian(_deltaTime);
             dummy->SetPos(player->GetPos());
             player->SetThrowPrepaAnimationFlag(TRUE);
         }
 
-        else if (tmp == 3)
+        if ((tmp == 3 || GamePad::GetButtonState(Button::A)==-1) && bulletstandbyFlag)
         {
             bullet = new Bullet(player);
             GameObjMgr::Entry(bullet);
@@ -182,6 +191,7 @@ void Play::ShotFlow(float _deltaTime)
             bulletMgr->SubBulletNum(BulletMgr::current_type);
             player->SetThrowPrepaAnimationFlag(FALSE);
             player->SetThrowAnimationFlag(TRUE);
+            bulletstandbyFlag = FALSE;
             dummy->SetAlive(false);
         }
         else

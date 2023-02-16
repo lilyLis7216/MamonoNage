@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SceneBase.h"
-
+#include "DxLib.h"
 class Background;
 class Map;
 class Flag;
@@ -61,5 +61,6 @@ private:
     BulletDummy* dummy;
     Bullet* bullet;
     BulletMgr* bulletMgr;
+    bool bulletstandbyFlag = FALSE;
 
 };

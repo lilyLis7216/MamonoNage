@@ -1,14 +1,19 @@
 	#include "UI.h"
-
+	#include"DxLib.h"
 	UI* UI::mpInstance = nullptr;
 
 	int UI::ReadyBulletBoxX1 = 0;
-	int UI::ReadyBulletBoxY1 = 400;
-	int UI::ReadyBulletBoxX2 = 800;
+	int UI::ReadyBulletBoxY1 = 300;
+	int UI::ReadyBulletBoxX2 = 780;
 	int UI::ReadyBulletBoxY2 = 1080;
 	int UI::ReadyBulletBoxFlameSize = 10;
 	int UI::ReadyBulletBoxmainCr = 0;
 	int UI::ReadyBulletBoxframeCr = 0;
+
+	int UI::ReadyBulletPosX=130;
+	int UI::ReadyBulletPosY=980;
+	int UI::GoastBulletCoolTimeR=30;
+
 
 	UI::UI()
 	{
@@ -43,16 +48,37 @@
 
 	void UI::UIText(int x, int y, int color, const char* str)
 	{
+
 	}
 
 	void UI::ReadyBullet(BulletMgr::BulletType type)
 	{
 
-		DrawRotaGraph(70,980,4.0f,0,BulletMgr::GetHandle(),TRUE);
+		DrawRotaGraph(ReadyBulletPosX, ReadyBulletPosY,5.0f,0,BulletMgr::GetHandle(),TRUE);
 	}
+
+	void UI::GoastBulletCoolTime(float cooltime)
+	{
+		int x = 100; // バーのx座標
+		int y = 900; // バーのy座標
+		int w = 200; // バーの幅
+		int h = 20;  // バーの高さ
+
+		// バーの輪郭を描画
+		DrawBox(x, y, x + w, y + h, GetColor(255, 255, 255), FALSE);
+
+		// バーの内部を描画（クールタイムが経過した割合で塗りつぶす）
+		int barWidth = (cooltime > 0) ? (w * (cooltime / 3)) : w;
+		int barColor = (cooltime > 0) ? GetColor(128, 128, 128) : GetColor(255, 255, 255);
+		DrawBox(x, y, x + barWidth, y + h, barColor, TRUE);
+	}
+
 
 	void UI::Draw(BulletMgr::BulletType type)
 	{
 		UIBox(ReadyBulletBoxX1, ReadyBulletBoxY1, ReadyBulletBoxX2, ReadyBulletBoxY2, ReadyBulletBoxFlameSize,ReadyBulletBoxmainCr, ReadyBulletBoxframeCr);
 		ReadyBullet(type);
+		if (BulletMgr::GetHandle() == BulletMgr::GetGoastHandle()&& BulletMgr::GoastCoolTime<3.0f) {
+			GoastBulletCoolTime(BulletMgr::GoastCoolTime);
+		}
 	}

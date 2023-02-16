@@ -1,7 +1,7 @@
 #include "Result.h"
 #include "DxLib.h"
 #include "../Scene/Title.h"
-
+#include "../Pad/Pad.h"
 Result::Result(bool clearflag)
     : SceneBase()
 {
@@ -35,8 +35,10 @@ Result::~Result()
 /// <returns>現在のシーンのポインタ</returns>
 SceneBase* Result::Update(float _deltaTime)
 {
+    // ゲームパッドの更新
+    GamePad::Update();
     // シーン遷移条件(スペースキーを押すと遷移（仮）)
-    if (CheckHitKey(KEY_INPUT_A))
+    if (CheckHitKey(KEY_INPUT_A) || GamePad::GetButtonState(Button::START))
     {
         // 条件を満たしていたらリザルトシーンを生成してそのポインタを返す
         return new Title();

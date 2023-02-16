@@ -14,6 +14,8 @@ public:
 	static void UIBox(int x1, int x2, int y1, int y2, int frameSize, int mainCr, int frameCr);
 	static void UIText(int x, int y, int color, const char* str);
 	static void ReadyBullet(BulletMgr::BulletType type);
+	static void GoastBulletCoolTime(float cooltime);
+
 
 	static void Draw(BulletMgr::BulletType type);
 private:
@@ -30,5 +32,9 @@ private:
 	static int ReadyBulletBoxFlameSize;
 	static int ReadyBulletBoxmainCr;
 	static int ReadyBulletBoxframeCr;
+
+	static int ReadyBulletPosX;
+	static int ReadyBulletPosY;
+	static int GoastBulletCoolTimeR;
 };
 
