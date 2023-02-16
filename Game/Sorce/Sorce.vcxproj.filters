@@ -38,6 +38,9 @@
     <Filter Include="ソース ファイル\GameObject\Flag">
       <UniqueIdentifier>{88035554-2a3d-4469-b9fd-aef65dea2f69}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Pad">
+      <UniqueIdentifier>{02319c0e-81de-496f-aab5-8ea23d147e26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene\Play.cpp">
@@ -124,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="GameObject\Flag\Flag.cpp">
       <Filter>ソース ファイル\GameObject\Flag</Filter>
+    </ClCompile>
+    <ClCompile Include="Pad\Pad.cpp">
+      <Filter>ソース ファイル\Pad</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +219,9 @@
     </ClInclude>
     <ClInclude Include="GameObject\Flag\Flag.h">
       <Filter>ソース ファイル\GameObject\Flag</Filter>
+    </ClInclude>
+    <ClInclude Include="Pad\Pad.h">
+      <Filter>ソース ファイル\Pad</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

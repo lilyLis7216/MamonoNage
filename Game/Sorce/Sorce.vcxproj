@@ -158,6 +158,7 @@
     <ClCompile Include="Manager\KeyMgr.cpp" />
     <ClCompile Include="Manager\MonsterMgr.cpp" />
     <ClCompile Include="Math\Math.cpp" />
+    <ClCompile Include="Pad\Pad.cpp" />
     <ClCompile Include="Scene\Play.cpp" />
     <ClCompile Include="Scene\Result.cpp" />
     <ClCompile Include="Scene\SceneBase.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="Manager\KeyMgr.h" />
     <ClInclude Include="Manager\MonsterMgr.h" />
     <ClInclude Include="Math\Math.h" />
+    <ClInclude Include="Pad\Pad.h" />
     <ClInclude Include="Scene\Play.h" />
     <ClInclude Include="Scene\Result.h" />
     <ClInclude Include="Scene\SceneBase.h" />
