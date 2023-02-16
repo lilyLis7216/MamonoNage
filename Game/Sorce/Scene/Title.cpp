@@ -1,7 +1,7 @@
 #include "Title.h"
 #include "Play.h"
 #include "../Stage/Background.h"
-
+#include"../Pad/Pad.h"
 /// <summary>
 /// コンストラクタ
 /// </summary>
@@ -14,6 +14,7 @@ Title::Title()
     // タイトル画像の読み込み
     sceneImage = LoadGraph("../asset/scene/title.png");
     bg = new Background();
+    GamePad::SetPadUse(true);
 }
 
 /// <summary>
@@ -34,6 +35,8 @@ Title::~Title()
 /// <returns>現在のシーンのポインタ</returns>
 SceneBase* Title::Update(float _deltaTime)
 {
+    // ゲームパッドの更新
+    GamePad::Update();
     // 不透明でなければ
     if (fadein <= 255)
     {
@@ -46,7 +49,7 @@ SceneBase* Title::Update(float _deltaTime)
         bgPos.y = 1300;
 
         // エンターが押されたら
-        if (CheckHitKey(KEY_INPUT_RETURN))
+        if (CheckHitKey(KEY_INPUT_RETURN)|| GamePad::GetButtonState(Button::START))
         {
             // プレイシーンを生成してポインタを返す
             return new Play();

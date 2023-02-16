@@ -81,6 +81,10 @@ void Bullet::BulletMove()
     {
         mBulletPower.x = 0;
         mBulletPower.y = 0;
+        if (handle == BulletMgr::GetGoastHandle())
+        {
+            alive = FALSE;
+        }
     }
     else
     {

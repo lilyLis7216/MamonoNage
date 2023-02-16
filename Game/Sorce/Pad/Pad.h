@@ -7,7 +7,6 @@ class Pad
 
 #include "DxLib.h"
 
-using namespace std;
 
     /// <summary>
     /// ゲームパッドクラス

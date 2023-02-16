@@ -71,12 +71,12 @@ void Player::Init()
 
 void Player::Move(float _deltaTime)
 {
-    if (CheckHitKey(KEY_INPUT_RIGHT))
+    if (CheckHitKey(KEY_INPUT_RIGHT)|| GamePad::GetButtonState(Button::RIGHT))
     {
         rightDir = false;
         pos.x += RunSpeed * _deltaTime;
     }
-    else if (CheckHitKey(KEY_INPUT_LEFT))
+    else if (CheckHitKey(KEY_INPUT_LEFT) || GamePad::GetButtonState(Button::LEFT))
     {
         rightDir = true;
         pos.x -= RunSpeed * _deltaTime;
@@ -85,11 +85,11 @@ void Player::Move(float _deltaTime)
     GetHitKeyStateAllEx(key);
     if (onGround)
     {
-        if (key[KEY_INPUT_SPACE] == 1)
+        if (/*key[KEY_INPUT_SPACE] == 1||*/ GamePad::GetButtonState(Button::B) == 1)
         {
             jumpFlag = true;
         }
-        else if (key[KEY_INPUT_SPACE] > 1 || key[KEY_INPUT_SPACE] == -1)
+        else if (GamePad::GetButtonState(Button::B) > 1 || GamePad::GetButtonState(Button::B) == -1)
         {
             jumpFlag = false;
         }

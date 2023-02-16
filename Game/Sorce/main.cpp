@@ -7,6 +7,8 @@
 #include "ShakeMgr.h"
 #include "Scene/Title.h"
 #include "UI.h"
+#include "Pad/Pad.h"
+
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
     // DxLib初期化
@@ -22,6 +24,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
     //キーボードマネージャーのイニシャライズ
     KeyMgr::Initialize();
+
+    // ゲームパッドの生成
+    GamePad::CreateInstance();
 
     //シェイク反応
     ShakeMgr::CreateInstance();

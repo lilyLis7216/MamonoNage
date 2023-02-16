@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DxLib.h"
-
+#include "../Pad/Pad.h"
 class KeyMgr final
 {
 public:

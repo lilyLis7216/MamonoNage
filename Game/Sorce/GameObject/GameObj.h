@@ -4,7 +4,7 @@
 #include "DxLib.h"
 #include"../Collision/Collision.h"
 #include"../ShakeMgr.h"
-
+#include"../Pad/Pad.h"
 const float gravity = 0.3f;    // d—Í
 const float maxFallSpeed = 10.0f;   // Å‘å—‰º‘¬“x
 
