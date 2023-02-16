@@ -59,17 +59,17 @@
 
 	void UI::GoastBulletCoolTime(float cooltime)
 	{
-		int x = 100; // バーのx座標
-		int y = 900; // バーのy座標
+		int x = 40; // バーのx座標
+		int y = 850; // バーのy座標
 		int w = 200; // バーの幅
-		int h = 20;  // バーの高さ
+		int h = 50;  // バーの高さ
 
 		// バーの輪郭を描画
 		DrawBox(x, y, x + w, y + h, GetColor(255, 255, 255), FALSE);
 
 		// バーの内部を描画（クールタイムが経過した割合で塗りつぶす）
 		int barWidth = (cooltime > 0) ? (w * (cooltime / 3)) : w;
-		int barColor = (cooltime > 0) ? GetColor(128, 128, 128) : GetColor(255, 255, 255);
+		int barColor = (cooltime > 0) ? GetColor(255, 255, 255) : GetColor(255, 255, 255);
 		DrawBox(x, y, x + barWidth, y + h, barColor, TRUE);
 	}
 
