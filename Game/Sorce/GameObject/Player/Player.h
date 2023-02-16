@@ -95,6 +95,8 @@ public:
     // アニメーション制御
     void AnimationUpdate(float _deltaTime);
 
+    void deathplayer();
+
     //描画制御
     void AnimationControl();
     

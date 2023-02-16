@@ -37,6 +37,7 @@ Player::~Player()
 
 void Player::Update(float _deltaTime)
 {
+ /*   deathplayer();*/
     Move(_deltaTime);
     AnimationUpdate(_deltaTime);
     MapColEnter();
@@ -294,6 +295,14 @@ void Player::AnimationUpdate(float _deltaTime)
     if (mThrowAnimationFlag) {ThrowAnimation(_deltaTime);}
     AnimationControl();
 }
+
+//void Player::deathplayer()
+//{
+//    if (/*pos.x > 1950 || pos.x < -50 ||*/ pos.y < 0 || pos.y<-1100)
+//    {
+//        mDamageAnimationFlag = TRUE;
+//    }
+//}
 
 void Player::AnimationControl()
 {
