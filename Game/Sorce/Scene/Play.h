@@ -44,7 +44,6 @@ public:
     ///// </summary>
     //void isStand();
 
-
     /// <summary>
     /// キャラがバレットを投げるまでの流れ
     /// </summary>
@@ -62,4 +61,5 @@ private:
     BulletDummy* dummy;
     Bullet* bullet;
     BulletMgr* bulletMgr;
+
 };

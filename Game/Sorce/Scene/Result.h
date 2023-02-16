@@ -8,7 +8,7 @@ public:
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    Result();
+    Result(bool clearflag);
 
     /// <summary>
     /// デストラクタ
@@ -26,4 +26,8 @@ public:
     /// リザルトシーンの描画処理
     /// </summary>
     void Draw() override;
+private:
+    int gameoverImg = -1;
+    int continueImg = -1;
+    int gameclearImg = -1;
 };

@@ -8,11 +8,11 @@ public:
 
     static void Initialize();                              // ゲームオブジェクトマネージャの初期化処理
 
-    static void GetPush_KeyP();
-    static int  KeyStatusP();
+    static void GetPush_KeyZ();
+    static int  KeyStatusZ();
 
-    static void GetPush_KeyI();
-    static int  KeyStatusI();
+    static void GetPush_KeyC();
+    static int  KeyStatusC();
 
     static void GetPush_KeyD();
     static int  KeyStatusD();
@@ -21,10 +21,10 @@ public:
     static int  KeyStatusA();
 
     static int mastarkey[256];
-    static bool tmppushP;
-    static bool nowpushP;
-    static bool tmppushI;
-    static bool nowpushI;
+    static bool tmppushZ;
+    static bool nowpushZ;
+    static bool tmppushC;
+    static bool nowpushC;
     static bool tmppushD;
     static bool nowpushD;
     static bool tmppushA;

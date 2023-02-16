@@ -6,7 +6,7 @@
 #include "Manager/EffectMgr.h"
 #include "ShakeMgr.h"
 #include "Scene/Title.h"
-
+#include "UI.h"
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
     // DxLib初期化
@@ -27,7 +27,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     ShakeMgr::CreateInstance();
     //---UI関連インスタンス---//
     EffectMgr::CreateInstance();
-    
+    UI::CreateInstance();
+
     //PlayerObjectManager::Initialize();
     // デルタタイム管理用の変数をセット
     LONGLONG nowTime;

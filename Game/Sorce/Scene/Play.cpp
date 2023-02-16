@@ -15,7 +15,7 @@
 #include "../Manager/GameObjMgr.h"
 #include "../Manager/KeyMgr.h"
 #include "../Scene/Result.h"
-
+#include"../UI.h"
 
 /// <summary>
 /// コンストラクタ
@@ -32,6 +32,7 @@ Play::Play()
     map = new Map();
     flag = new Flag();
     scroll = new Scroll();
+    GameObjMgr::Entry(flag);
     //block = new SkeltonBlock;
 
     //---当たり判定関連インスタンス---//
@@ -42,12 +43,7 @@ Play::Play()
     bulletMgr = new BulletMgr();
     player->Init();
     GameObjMgr::Entry(player);
-    GameObjMgr::Entry(flag);
-
-
     
-    
-
 
     ////---エネミー関連インスタンス--//
     //GameObjMgr::Entry(new Bat(VGet(50, 100, 0)));
@@ -106,12 +102,13 @@ SceneBase* Play::Update(float _deltaTime)
    
 
     // シーン遷移条件(スペースキーを押すと遷移（仮）)
-    if (CheckHitKey(KEY_INPUT_SPACE)||player->GetPlySceneEndFlag())
+    if (player->GetPlySceneEndFlag())
     {
         MapCollision::DeleteInstance();
+        bool clearflag = player->GetClearFlag();
         GameObjMgr::DeleteInstance();
         // 条件を満たしていたらリザルトシーンを生成してそのポインタを返す
-        return new Result();
+        return new Result(clearflag);
     }
 
     // シーン遷移条件を満たしていなかったら今のポインタを返す
@@ -125,11 +122,13 @@ void Play::Draw()
 {
     bg->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
     map->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
-    //block->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 
     GameObjMgr::Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
     BulletMgr::Draw(player->GetPos(), player->GetDir(), scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
     EffectMgr::ADraw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+    //---UI関連---//
+    UI::Draw(BulletMgr::nowtype());
+
     unsigned int Color;
 
     Color = GetColor(255, 255, 255);
@@ -153,7 +152,7 @@ void Play::ShotFlow(float _deltaTime)
     BulletMgr::AutoSwitchType(BulletMgr::current_type);
 
     //Iボタンで弾を切り替える
-    if (KeyMgr::KeyStatusI() == 3) {
+    if (KeyMgr::KeyStatusC() == 3) {
         BulletMgr::SwitchType(BulletMgr::current_type);
     }
 
@@ -161,7 +160,7 @@ void Play::ShotFlow(float _deltaTime)
 
     if (bulletMgr->GetBulletNum(BulletMgr::current_type) > 0)
     {
-        int tmp = KeyMgr::KeyStatusP();
+        int tmp = KeyMgr::KeyStatusZ();
         if (tmp == 1) {
             dummy = new BulletDummy(player);
             GameObjMgr::Entry(dummy);

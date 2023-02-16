@@ -2,10 +2,10 @@
 
 KeyMgr* KeyMgr::mpInstance = nullptr;
 
-bool KeyMgr::nowpushI = FALSE;
-bool KeyMgr::tmppushI = FALSE;
-bool KeyMgr::nowpushP = FALSE;
-bool KeyMgr::tmppushP = FALSE;
+bool KeyMgr::nowpushC = FALSE;
+bool KeyMgr::tmppushC = FALSE;
+bool KeyMgr::nowpushZ = FALSE;
+bool KeyMgr::tmppushZ = FALSE;
 bool KeyMgr::nowpushD = FALSE;
 bool KeyMgr::tmppushD = FALSE;
 bool KeyMgr::nowpushA = FALSE;
@@ -28,39 +28,39 @@ void KeyMgr::Initialize()
     }
 }
 
-void KeyMgr::GetPush_KeyP()
+void KeyMgr::GetPush_KeyZ()
 {
     //
-    if (CheckHitKey(KEY_INPUT_P))
+    if (CheckHitKey(KEY_INPUT_Z))
     {
-        nowpushP = TRUE;
+        nowpushZ = TRUE;
     }
     else
     {
-        nowpushP = FALSE;
+        nowpushZ = FALSE;
     }
 }
 
-int KeyMgr::KeyStatusP()
+int KeyMgr::KeyStatusZ()
 {
-    GetPush_KeyP();
+    GetPush_KeyZ();
 
     int ret = 0;
 
     //ボタンが押された瞬間
-    if (tmppushP == FALSE && nowpushP == TRUE)
+    if (tmppushZ == FALSE && nowpushZ == TRUE)
     {
         ret = 1;
     }
 
     //ボタンが長押しされている状態
-    else if (tmppushP == TRUE && nowpushP == TRUE)
+    else if (tmppushZ == TRUE && nowpushZ == TRUE)
     {
         ret = 2;
     }
 
     //ボタンを離した瞬間
-    else if (tmppushP == TRUE && nowpushP == FALSE)
+    else if (tmppushZ == TRUE && nowpushZ == FALSE)
     {
         ret = 3;
     }
@@ -69,42 +69,42 @@ int KeyMgr::KeyStatusP()
     else {
         ret = 0;
     }
-    tmppushP = nowpushP;
+    tmppushZ = nowpushZ;
     return ret;
 }
 
-void KeyMgr::GetPush_KeyI()
+void KeyMgr::GetPush_KeyC()
 {
-    if (CheckHitKey(KEY_INPUT_I))
+    if (CheckHitKey(KEY_INPUT_C))
     {
-        nowpushI = TRUE;
+        nowpushC = TRUE;
     }
     else
     {
-        nowpushI = FALSE;
+        nowpushC = FALSE;
     }
 }
 
-int KeyMgr::KeyStatusI()
+int KeyMgr::KeyStatusC()
 {
-    GetPush_KeyI();
+    GetPush_KeyC();
 
     int ret = 0;
 
     //ボタンが押された瞬間
-    if (tmppushI == FALSE && nowpushI == TRUE)
+    if (tmppushC == FALSE && nowpushC == TRUE)
     {
         ret = 1;
     }
 
     //ボタンが長押しされている状態
-    else if (tmppushI == TRUE && nowpushI == TRUE)
+    else if (tmppushC == TRUE && nowpushC == TRUE)
     {
         ret = 2;
     }
 
     //ボタンを離した瞬間
-    else if (tmppushI == TRUE && nowpushI == FALSE)
+    else if (tmppushC == TRUE && nowpushC == FALSE)
     {
         ret = 3;
     }
@@ -113,7 +113,7 @@ int KeyMgr::KeyStatusI()
     else {
         ret = 0;
     }
-    tmppushI = nowpushI;
+    tmppushC = nowpushC;
     return ret;
 }
 

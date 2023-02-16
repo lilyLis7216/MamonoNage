@@ -61,6 +61,8 @@ public:
     //’e‚ÌØ‚è‘Ö‚¦
     static void AutoSwitchType(BulletType type);
 
+    static BulletType  nowtype() { return current_type; }
+
     static int GetHandle() { return handle; }
 
     static void Draw(VECTOR PlayerPos,bool RightDir, int offSetX, int offSetY);
